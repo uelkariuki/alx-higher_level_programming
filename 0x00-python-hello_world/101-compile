@@ -4,4 +4,5 @@ import os
 
 Python_file = os.environ.get('PYFILE')
 Pythonc_file = Python_file + 'c'
+print("Compiling", Python_file, "...")
 py_compile.compile(Python_file, cfile=Pythonc_file)
