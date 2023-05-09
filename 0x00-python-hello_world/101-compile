@@ -1,4 +1,7 @@
-#!/uar/bin/python3
+#!/usr/bin/python3
 import py_compile
 import os
 
+Python_file = os.environ.get('PYFILE')
+Pythonc_file = Python_file + 'c'
+py_compile.compile(Python_file, cfile=Pythonc_file)
