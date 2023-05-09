@@ -7,3 +7,6 @@ def magic_calculation(a, b, c):
         return a + b
     elif:
         return a * b - c
+
+
+magic_calculation(a, b, c)
