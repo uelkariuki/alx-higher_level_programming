@@ -1,3 +1,5 @@
-# 0x02. Python - import & modules
+# ALX Higher Level Programming
 
-0. Write a program that imports the function def add(a, b): from the file add_0.py and prints the result of the addition 1 + 2 = 3
+This repository contains the projects I undertook in Higher Level Programming
+
+1. 0x00. Python - Hello, World
