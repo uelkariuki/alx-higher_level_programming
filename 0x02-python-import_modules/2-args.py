@@ -8,7 +8,7 @@ if __name__ == "__main__":
         print('{}'. format(a), "arguments.", end=" ")
     elif a == 1:
         print('{}'. format(a), "argument:")
-    elif a > 2:
+    elif a >= 2:
         print('{}'. format(a), "arguments.")
 
     arg_position = 1
