@@ -1,6 +1,5 @@
 # 0x03. Python - Data Structures: Lists, Tuples
 ## Tasks
-
 0. Write a function that prints all integers of a list.
 1. Write a function that retrieves an element from a list like in C.
 2. Write a function that replaces an element of a list at a specific position (like in C).
@@ -15,4 +14,4 @@
 11. Write a function that deletes the item at a specific position in a list.
 12. Complete the source code in order to switch value of `a` and `b`
 13. Write a function in C that checks if a singly linked list is a palindrome.
-14. Create a C function that prints some basic info about Python lists.
+14. Create a `C function` that prints some basic info about Python lists.
