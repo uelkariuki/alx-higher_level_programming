@@ -75,5 +75,6 @@ void print_python_bytes(PyObject *p)
 	printf("  first %ld bytes: ", (real_size < 10) ? real_size : 10 + 1);
 	for ( q = 0; q < ((real_size < 10) ? real_size : 10); q++)
 		printf("%.2x ", (unsigned char) real_data_bytes[q]);
+        printf("%.2x", (unsigned char) real_data_bytes[real_size]);
 	printf("\n");
 }
