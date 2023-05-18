@@ -57,31 +57,27 @@ void print_python_bytes(PyObject *p)
 	PyBytesObject *real_type;
 	real_type = (PyBytesObject *)p;
 
-<<<<<<< HEAD
-	if (real_type && PyBytes_Check(real_type))
-=======
-	printf("[.] bytes object info\n");
+
 	if (!PyBytes_Check(p))
->>>>>>> 8fadeef95d3f4a7d7805d0e13fd2435fb57c87c2
-	{
-		printf("[.] bytes object info\n");
-		printf("   size: %ld\n", real_size);
-		printf("  trying string: ");
-		for (q = 0; q < real_size; q++)
-		{
-			if (real_data_bytes[q] >= 32 && real_data_bytes[q] <= 126)
-				printf("%c", real_data_bytes[q]);
-			else
-				printf("\\x%.2x", (unsigned char) real_data_bytes[q]);
-		}
-		printf("\n");
-		printf("  first %ld bytes: ", (real_size < 10) ? real_size : 10);
-		for ( q = 0; q < ((real_size < 10) ? real_size : 10    ); q++)
-			printf("%.2x ", (unsigned char) real_data_bytes[q]);
-		printf("\n");
-	}
-	else
 	{
 		printf("[ERROR] Invalid Bytes Object\n");
+		return;
 	}
+
+	printf("[.] bytes object info\n");
+	printf("[.] bytes object info\n");
+	printf("   size: %ld\n", real_size);
+	printf("  trying string: ");
+	for (q = 0; q < real_size; q++)
+	{
+		if (real_data_bytes[q] >= 32 && real_data_bytes[q] <= 126)
+			printf("%c", real_data_bytes[q]);
+		else
+			printf("\\x%.2x", (unsigned char) real_data_bytes[q]);
+	}
+	printf("\n");
+	printf("  first %ld bytes: ", (real_size < 10) ? real_size : 10);
+	for ( q = 0; q < ((real_size < 10) ? real_size : 10    ); q++)
+		printf("%.2x ", (unsigned char) real_data_bytes[q]);
+	printf("\n");
 }
