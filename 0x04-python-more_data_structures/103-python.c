@@ -53,10 +53,7 @@ void print_python_list(PyObject *p)
 void print_python_bytes(PyObject *p)
 {
 	char *real_data_bytes = PyBytes_AsString(p);
-	Py_ssize_t real_size = PyBytes_Size(p), q;
-	PyBytesObject *real_type;
-	real_type = (PyBytesObject *)p;
-
+	Py_ssize_t real_size = PyBytes_Size(p),q;
 
 	if (!PyBytes_Check(p))
 	{
