@@ -62,7 +62,7 @@ void print_python_bytes(PyObject *p)
 	}
 
 	printf("[.] bytes object info\n");
-	printf("   size: %ld\n", real_size);
+	printf("  size: %ld\n", real_size);
 	printf("  trying string: ");
 	for (q = 0; q < real_size; q++)
 	{
@@ -72,8 +72,8 @@ void print_python_bytes(PyObject *p)
 			printf("\\x%.2x", (unsigned char) real_data_bytes[q]);
 	}
 	printf("\n");
-	printf("  first %ld bytes: ", (real_size < 10) ? real_size : 10);
-	for ( q = 0; q < ((real_size < 10) ? real_size : 10    ); q++)
+	printf("  first %ld bytes: ", (real_size < 10) ? real_size : 10 + 1);
+	for ( q = 0; q < ((real_size < 10) ? real_size : 10); q++)
 		printf("%.2x ", (unsigned char) real_data_bytes[q]);
 	printf("\n");
 }
