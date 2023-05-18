@@ -40,7 +40,7 @@ void print_python_list(PyObject *p)
 			printf("bytes\n");
 		else
 			printf("unknown\n");
-                Py_DECREF(real_item);
+                /*Py_DECREF(real_item);*/
 	}
 
 }
@@ -57,11 +57,10 @@ void print_python_bytes(PyObject *p)
 
 	if (!PyBytes_Check(p))
 	{
-		printf("[ERROR] Invalid Bytes Object\n");
+		fprintf(stderr, "[ERROR] Invalid Bytes Object\n");
 		return;
 	}
 
-	printf("[.] bytes object info\n");
 	printf("[.] bytes object info\n");
 	printf("   size: %ld\n", real_size);
 	printf("  trying string: ");
