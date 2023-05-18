@@ -7,7 +7,7 @@
 
 void print_python_list(PyObject *p)
 {
-	PyObject *iterate, real_item = NULL;
+	PyObject *iterate, *real_item = NULL;
 	Py_ssize_t real_size, allocated;
 	printf("[*] Python list info\n");
 	/*size of list*/
