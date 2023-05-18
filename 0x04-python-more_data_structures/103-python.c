@@ -5,7 +5,7 @@
  * @p: pointer to a Python list object 
  */
 
-void print_python_list(PyObject *p);
+void print_python_list(PyObject *p)
 {
 	PyObject *iterate, real_item = NULL;
 	Py_ssize_t real_size, allocated;
@@ -20,10 +20,8 @@ void print_python_list(PyObject *p);
 	}
 	Py_DECREF(iterate);
 	printf("[*] Size of the Python List = %ld\n", real_size);
-
 	allocated = ((PyListObject *)p)->allocated;
 	printf("[*] Allocated = %ld\n", allocated);
-
 	for (Py_ssize_t q = 0; q < real_size; q++)
 	{
 		real_item = PySequence_GetItem(p, q);
@@ -51,7 +49,7 @@ void print_python_list(PyObject *p);
  * @p: pointer to a Python bytes object
  */
 
-void print_python_bytes(PyObject *p);
+void print_python_bytes(PyObject *p)
 {
 	char *real_data_bytes = PyBytes_AsString(p);
 	Py_ssize_t real_size = PyBytes_Size(p), q;
