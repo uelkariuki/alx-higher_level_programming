@@ -44,7 +44,6 @@ void print_python_list(PyObject *p)
                 }
 		else
 			printf("unknown\n");
-                
                 Py_DECREF(real_item);
 	}
 
