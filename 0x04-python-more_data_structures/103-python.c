@@ -52,14 +52,16 @@ void print_python_list(PyObject *p)
 
 void print_python_bytes(PyObject *p)
 {
-	char *real_data_bytes = PyBytes_AsString(p);
-	Py_ssize_t real_size = PyBytes_Size(p),q;
+	char *real_data_bytes;
+	Py_ssize_t real_size, q;
 
 	if (!PyBytes_Check(p))
 	{
 		fprintf(stderr, "[ERROR] Invalid Bytes Object\n");
 		return;
 	}
+	real_data_bytes = PyBytes_AsString(p);
+	real_size = PyBytes_Size(p);
 
 	printf("[.] bytes object info\n");
 	printf("  size: %ld\n", real_size);
