@@ -70,7 +70,7 @@ void print_python_bytes(PyObject *p)
 	real_size = PyBytes_Size(p);
 
 	printf("  size: %ld\n", real_size);
-	printf("  trying string: ");
+	printf("  trying string: \n");
 	for (q = 0; q < real_size; q++)
 	{
 		if (real_data_bytes[q] >= 32 && real_data_bytes[q] <= 126)
