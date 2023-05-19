@@ -56,14 +56,15 @@ void print_python_bytes(PyObject *p)
 	Py_ssize_t real_size, q;
 
 	if (!PyBytes_Check(p))
-	{
-		fprintf(stderr, "[ERROR] Invalid Bytes Object\n");
-		return;
+	{		
+                printf("[.] bytes object info\n");             
+                printf("  [ERROR] Invalid Bytes Object\n");
+                return;
 	}
+        printf("[.] bytes object info\n");
 	real_data_bytes = PyBytes_AsString(p);
 	real_size = PyBytes_Size(p);
 
-	printf("[.] bytes object info\n");
 	printf("  size: %ld\n", real_size);
 	printf("  trying string: ");
 	for (q = 0; q < real_size; q++)
