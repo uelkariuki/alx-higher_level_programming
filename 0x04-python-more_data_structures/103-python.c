@@ -1,6 +1,7 @@
 #include <Python.h>
 
-/**
+void print_python_bytes(PyObject *p);
+/*
  * print_python_list - prints some basic info about Python lists 
  * @p: pointer to a Python list object 
  */
@@ -37,7 +38,10 @@ void print_python_list(PyObject *p)
 		else if (PyList_Check(real_item))
 			printf("list\n");
 		else if (PyBytes_Check(real_item))
+                {
 			printf("bytes\n");
+                        print_python_bytes(real_item);
+                }
 		else
 			printf("unknown\n");
                 /*Py_DECREF(real_item);*/
