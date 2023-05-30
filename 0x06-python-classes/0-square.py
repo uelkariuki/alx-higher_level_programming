@@ -7,7 +7,5 @@ class Square:
 
 
 class Square:
+    """ Square class"""
     pass
-
-
-print
