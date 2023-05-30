@@ -13,6 +13,9 @@ void print_python_list(PyObject *p)
 	Py_ssize_t real_size, allocated;
 	printf("[*] Python list info\n");
 	/*size of list*/
+	fflush(stdout);
+	/*reason to that is that Pythons print and libCs printf don't*/
+	/*share the same buffer, and the output can appear disordered.*/
 	real_size = 0;
 	iterate = PyObject_GetIter(p);
 	while ((real_item = PyIter_Next(iterate)) != NULL)
