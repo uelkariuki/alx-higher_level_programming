@@ -88,7 +88,7 @@ void print_python_bytes(PyObject *p)
 			printf("\\x%.2x", (unsigned char) real_data_bytes[q]);
 	}
 	printf("\n");
-	printf("  first %ld bytes:",(real_size < 10) ? real_size + 1: 10);
+	printf("  first %ld bytes: ",(real_size < 10) ? real_size + 1: 10);
 	for ( q = 0; q < ((real_size < 10) ? real_size : 10); q++)
 		printf("%.2x ", (unsigned char) real_data_bytes[q]);
         /*printf("%.2x", (unsigned char) real_data_bytes[real_size]);*/
@@ -106,7 +106,6 @@ void print_python_bytes(PyObject *p)
 void print_python_float(PyObject *p)
 {
 	double float_value;
-	int precision = 0;
 
 	if (!PyFloat_Check(p))
 	{
@@ -116,7 +115,7 @@ void print_python_float(PyObject *p)
 	}
 	printf("[.] float object info\n");	
 	float_value = PyFloat_AsDouble(p);
-	printf("  value: %*f\n", precision, float_value);
+	printf("  value: %f\n", float_value);
 	
 
 }
