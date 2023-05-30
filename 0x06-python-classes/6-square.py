@@ -64,12 +64,12 @@ class Square:
         if (self.__size == 0):
             print("")
             return
-        for _ in range(self.__position[1]):
+        for q in range(self.__position[1]):
             print("")
 
-        for _ in range(self.__size):
-            for _ in range(self.__position[0]):
+        for q in range(self.__size):
+            for r in range(self.__position[0]):
                 print(" ", end="")
-            for _ in range(self.__size):
+            for r in range(self.__size):
                 print("#", end="")
             print()
