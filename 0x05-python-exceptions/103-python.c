@@ -19,6 +19,11 @@ void print_python_list(PyObject *p)
 	/*share the same buffer, and the output can appear disordered.*/
 	real_size = 0;
 	iterate = PyObject_GetIter(p);
+	if (iterate == NULL)
+	{	
+		printf("  [ERROR] Invalid List Object\n");
+		return;
+	}
 	while ((real_item = PyIter_Next(iterate)) != NULL)
 	{
 		real_size++;
@@ -31,6 +36,11 @@ void print_python_list(PyObject *p)
 	for (Py_ssize_t q = 0; q < real_size; q++)
 	{
 		real_item = PyObject_GetItem(p, PyLong_FromSsize_t(q));
+		if (real_item == NULL)
+		{
+			printf("  [ERROR] Invalid Bytes Object\n");
+			continue;
+		}
 		printf("Element %ld: ", q);
 		if (PyLong_Check(real_item))
 			printf("int\n");
