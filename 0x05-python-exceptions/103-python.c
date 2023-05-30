@@ -71,8 +71,8 @@ void print_python_bytes(PyObject *p)
                 return;
 	}
         printf("[.] bytes object info\n");
-	real_data_bytes = PyBytes_AsString(p);
-	real_size = PyBytes_Size(p);
+	real_size = ((PyVarObject *)p)->ob_size;
+	real_data_bytes = ((PyBytesObject *)p)->ob_sval;
 
 	printf("  size: %ld\n", real_size);
 	printf("  trying string: ");
