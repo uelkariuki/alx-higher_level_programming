@@ -8,6 +8,3 @@ class Square:
 
 class Square:
     pass
-
-
-print()
