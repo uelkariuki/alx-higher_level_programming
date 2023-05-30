@@ -29,7 +29,7 @@ void print_python_list(PyObject *p)
 	printf("[*] Allocated = %ld\n", allocated);
 	for (Py_ssize_t q = 0; q < real_size; q++)
 	{
-		real_item = PySequence_GetItem(p, q);
+		real_item = PyObject_GetItem(p, PyLong_FromSsize_t(q));
 		printf("Element %ld: ", q);
 		if (PyLong_Check(real_item))
 			printf("int\n");
