@@ -63,6 +63,7 @@ class Square:
         """
         if (self.__size == 0):
             print()
+            return
         for q in range(self.__position[1]):
             print()
 
