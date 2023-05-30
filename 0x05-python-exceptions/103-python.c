@@ -1,4 +1,5 @@
 #include <Python.h>
+#include <stdio.h>
 
 void print_python_bytes(PyObject *p);
 void print_python_float(PyObject *p);
@@ -10,7 +11,7 @@ void print_python_float(PyObject *p);
 void print_python_list(PyObject *p)
 {
 	PyObject *iterate, *real_item = NULL;
-	Py_ssize_t real_size, allocated;
+	Py_ssize_t real_size = 0, allocated;
 	printf("[*] Python list info\n");
 	/*size of list*/
 	fflush(stdout);
@@ -34,7 +35,10 @@ void print_python_list(PyObject *p)
 		if (PyLong_Check(real_item))
 			printf("int\n");
 		else if (PyFloat_Check(real_item))
+		{
 			printf("float\n");
+			print_python_float(real_item);
+		}		
 		else if (PyUnicode_Check(real_item))
 			printf("str\n");
 		else if (PyTuple_Check(real_item))
@@ -102,6 +106,7 @@ void print_python_bytes(PyObject *p)
 void print_python_float(PyObject *p)
 {
 	double float_value;
+	int precision = 0;
 
 	if (!PyFloat_Check(p))
 	{
@@ -111,7 +116,7 @@ void print_python_float(PyObject *p)
 	}
 	printf("[.] float object info\n");	
 	float_value = PyFloat_AsDouble(p);
-	printf("  value: %f\n", float_value);
-
+	printf("  value: %*f\n", precision, float_value);
+	
 
 }
