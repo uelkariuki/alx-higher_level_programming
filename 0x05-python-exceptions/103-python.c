@@ -110,6 +110,7 @@ void print_python_bytes(PyObject *p)
 void print_python_float(PyObject *p)
 {
 	double float_value;
+	
 
 	if (!PyFloat_Check(p))
 	{
@@ -119,7 +120,7 @@ void print_python_float(PyObject *p)
 	}
 	printf("[.] float object info\n");	
 	float_value = PyFloat_AsDouble(p);
-	printf("  value: %g\n", float_value);
+	printf("  value: %.16g\n", float_value);
 	
 
 }
