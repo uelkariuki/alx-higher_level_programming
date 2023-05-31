@@ -61,24 +61,28 @@ class SinglyLinkedList:
         that inserts a new Node into the correct sorted
         position in the list (increasing order)
         """
-        new_node = Node(value)
+        try:
+            if not isinstance(value, int):
+                raise TypeError("data must be an integer")
 
-        if self.head is None:
-            self.head = new_node
-        elif isinstance(value, str):
-            raise TypeError("data must be an integer")
-        elif self.head.data > value:
-            new_node.next_node = self.head
-            self.head = new_node
-        else:
-            current_node = self.head
+            new_node = Node(value)
 
-            while current_node.next_node is not None and \
-                    current_node.next_node.data < value:
-                current_node = current_node.next_node
+            if self.head is None:
+                self.head = new_node
+            elif self.head.data > value:
+                new_node.next_node = self.head
+                self.head = new_node
+            else:
+                current_node = self.head
 
-            new_node.next_node = current_node.next_node
-            current_node.next_node = new_node
+                while current_node.next_node is not None and \
+                        current_node.next_node.data < value:
+                    current_node = current_node.next_node
+
+                    new_node.next_node = current_node.next_node
+                    current_node.next_node = new_node
+        except TypeError as planned_error:
+            print(planned_error)
 
     def __str__(self):
         """
