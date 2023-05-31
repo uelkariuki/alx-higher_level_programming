@@ -91,6 +91,6 @@ class Square:
                 square_str = square_str + " "
             for r in range(self.__size):
                 square_str = square_str + "#"
-            square_str = square_str + '\n'
+            square_str = square_str + "\n"
 
-        return square_str
+        return square_str[:-1]
