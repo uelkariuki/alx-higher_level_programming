@@ -1,0 +1,8 @@
+[.] bytes object info
+  size: 16
+  trying string: Holberton School
+  first 10 bytes: 48 6f 6c 62 65 72 74 6f 6e 20
+[.] bytes object info
+  size: 10
+  trying string: New String
+  first 10 bytes: 4e 65 77 20 53 74 72 69 6e 67

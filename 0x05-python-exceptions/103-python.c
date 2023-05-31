@@ -76,7 +76,9 @@ void print_python_list(PyObject *p)
 void print_python_bytes(PyObject *p)
 {
 	char *real_data_bytes;
+
 	Py_ssize_t real_size, q;
+	fflush(stdout);
 
 	if (!PyBytes_Check(p))
 	{		
@@ -89,21 +91,13 @@ void print_python_bytes(PyObject *p)
 	real_data_bytes = ((PyBytesObject *)p)->ob_sval;
 
 	printf("  size: %ld\n", real_size);
-	printf("  trying string: ");
-	for (q = 0; q < real_size; q++)
-	{
-		if (real_data_bytes[q] >= 32 && real_data_bytes[q] <= 126)
-			printf("%c", real_data_bytes[q]);
-		else
-			printf("\\x%.2x", (unsigned char) real_data_bytes[q]);
-	}
-	printf("\n");
-	printf("  first %ld bytes:",(real_size < 10) ? real_size: 10);
-	for ( q = 0; q < ((real_size < 10) ? real_size : 10); q++)
+	printf("  trying string: %s\n", real_data_bytes);
+	if (real_size < 10)
+		printf("  first %ld bytes:", real_size + 1);
+	else
+		printf("  first 10 bytes:");
+	for ( q = 0; q <= real_size && q < 10; q++)
 		printf("%.2x ", (unsigned char) real_data_bytes[q]);
-        /*printf("%.2x", (unsigned char) real_data_bytes[real_size]);*/
-        if (real_size < 10)
-            printf("%.2x", 0);
 	printf("\n");
 }
 
