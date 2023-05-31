@@ -12,13 +12,13 @@ class MagicClass:
     """ magic class """
     def __init__(self, radius=0):
         """ Disassembly of __init__ """
-        if not isinstance(radius, (int, float)):
-            raise TypeError("radius must be a number")
         self.__radius = radius
+        if not isinstance(radius, (int, float)):
+            raise TypeError('radius must be a number')
 
     def area(self):
         """ Disassembly of area """
-        return math.pi * (self.__radius ** 2)
+        return (self.__radius ** 2) * math.pi
 
     def circumference(self):
         """
