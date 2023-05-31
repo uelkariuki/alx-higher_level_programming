@@ -97,7 +97,7 @@ void print_python_bytes(PyObject *p)
 	else
 		printf("  first 10 bytes:");
 	for ( q = 0; q <= real_size && q < 10; q++)
-		printf("%.2x ", (unsigned char) real_data_bytes[q]);
+		printf(" %.2x", (unsigned char) real_data_bytes[q]);
 	printf("\n");
 }
 
