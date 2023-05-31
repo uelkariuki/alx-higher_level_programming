@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import math
 
 """
 class MagicClass:
@@ -12,9 +11,9 @@ class MagicClass:
     """ magic class """
     def __init__(self, radius=0):
         """ Disassembly of __init__ """
-        self.__radius = radius
         if not isinstance(radius, (int, float)):
             raise TypeError('radius must be a number')
+        self.__radius = radius
 
     def area(self):
         """ Disassembly of area """
