@@ -63,7 +63,11 @@ class SinglyLinkedList:
         """
         new_node = Node(value)
 
-        if self.head is None or self.head.data > value:
+        if self.head is None:
+            self.head = new_node
+        elif isinstance(value, str):
+            raise TypeError("data must be an integer")
+        elif self.head.data > value:
             new_node.next_node = self.head
             self.head = new_node
         else:
