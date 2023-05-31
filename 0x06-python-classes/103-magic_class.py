@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 
+""" importing math function so as to use pi function """
+import math
+
 """
 class MagicClass:
 Write the Python class MagicClass that does exactly
