@@ -8,7 +8,7 @@ Write a class Node that defines a node of a singly linked list by
 class Node:
     """ class Node of a singly linke list """
     def __init__(self, data, next_node=None):
-        self.__data = data
+        self.data = data
         self.next_node = next_node
 
     @property
@@ -19,6 +19,14 @@ class Node:
         """
         return self.__data
 
+    @property
+    def next_node(self):
+        """
+        property def next_node(self): to retrieve Private
+        instance attribute: next_node
+        """
+        return self.__next_node
+
     """
     property setter def data(self, value): to set the Private instance
     attribute: data
@@ -28,14 +36,6 @@ class Node:
         if not isinstance(value, int):
             raise TypeError("data must be an integer")
         self.__data = value
-
-    """
-    property def next_node(self): to retrieve Private
-    instance attribute: next_node
-    """
-    @property
-    def next_node(self):
-        return self.__next_node
 
     """
     property setter def next_node(self, value): to set
@@ -61,30 +61,21 @@ class SinglyLinkedList:
         that inserts a new Node into the correct sorted
         position in the list (increasing order)
         """
-        try:
-            if not isinstance(value, int):
-                raise TypeError("data must be an integer")
+        new_node = Node(value)
 
-            new_node = Node(value)
+        if self.head is None:
+            self.head = new_node
+        elif self.head.data > value:
+            new_node.next_node = self.head
+            self.head = new_node
+        else:
+            current_node = self.head
 
-            if self.head is None:
-                self.head = new_node
-            elif self.head.data > value:
-                new_node.next_node = self.head
-                self.head = new_node
-            else:
-                current_node = self.head
-
-                while current_node.next_node is not None and \
-                        current_node.next_node.data < value:
-                    if not isinstance(current_node.next_node, Node):
-                        raise TypeError("next_node must be a Node object")
-                    current_node = current_node.next_node
-
-                new_node.next_node = current_node.next_node
-                current_node.next_node = new_node
-        except TypeError as planned_error:
-            print(planned_error)
+            while current_node.next_node is not None \
+                    and current_node.next_node.data < value:
+                current_node = current_node.next_node
+            new_node.next_node = current_node.next_node
+            current_node.next_node = new_node
 
     def __str__(self):
         """
