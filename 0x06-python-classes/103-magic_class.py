@@ -9,9 +9,8 @@ the same as the following Python bytecode:
 
 
 class MagicClass:
-    """ class magic class"""
+    """ magic class"""
     def __init__(self, radius=0):
-        """ initializing radius"""
         if not isinstance(radius, (int, float)):
             raise TypeError("radius must be a number")
         self.__radius = radius
