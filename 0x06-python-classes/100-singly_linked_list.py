@@ -77,6 +77,8 @@ class SinglyLinkedList:
 
                 while current_node.next_node is not None and \
                         current_node.next_node.data < value:
+                    if not isinstance(current_node.next_node, Node):
+                        raise TypeError("next_node must be a Node object")
                     current_node = current_node.next_node
 
                 new_node.next_node = current_node.next_node
