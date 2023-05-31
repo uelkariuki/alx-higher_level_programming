@@ -8,7 +8,7 @@ the same as the following Python bytecode:
 """
 
 
-class Magicclass:
+class MagicClass:
     """ class magic class"""
     def __init__(self, radius=0):
         """ initializing radius"""
