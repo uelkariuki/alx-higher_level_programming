@@ -79,8 +79,8 @@ class SinglyLinkedList:
                         current_node.next_node.data < value:
                     current_node = current_node.next_node
 
-                    new_node.next_node = current_node.next_node
-                    current_node.next_node = new_node
+                new_node.next_node = current_node.next_node
+                current_node.next_node = new_node
         except TypeError as planned_error:
             print(planned_error)
 
