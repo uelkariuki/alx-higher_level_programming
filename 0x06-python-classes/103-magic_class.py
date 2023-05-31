@@ -18,7 +18,7 @@ class MagicClass:
 
     def area(self):
         """ Disassembly of area """
-        return self.__radius ** 2 * math.pi
+        return  math.pi * self.__radius ** 2
 
     def circumference(self):
         """
