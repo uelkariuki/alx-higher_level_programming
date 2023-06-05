@@ -79,4 +79,4 @@ class Rectangle:
 
         for q in range(self.__height):
             represent_string += "#" * self.__width + "\n"
-        return represent_string
+        return represent_string.strip()
