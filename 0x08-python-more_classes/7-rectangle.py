@@ -92,7 +92,7 @@ class Rectangle:
         if isinstance(self.print_symbol, str):
             for q in range(self.__height):
                 represent_string += self.print_symbol * self.__width + "\n"
-        elif isinstance(self.print_symbol, list):
+        elif isinstance(self.print_symbol, (int, list, tuple, float, bool)):
             for q in range(self.__height):
                 represent_string += str(self.print_symbol) *\
                         self.__width + "\n"
