@@ -13,6 +13,11 @@ class Rectangle:
     """ class Rectangle"""
     """ A class attribute, counting the number of instances"""
     number_of_instances = 0
+    """
+    a public class attribute, to print the symbol #
+    for string representation
+    """
+    print_symbol = "#"
 
     def __init__(self, width=0, height=0):
         self.width = width
@@ -78,12 +83,20 @@ class Rectangle:
         print() and str() should print the rectangle with
         the character #:
         """
+
         if (self.__width == 0) or (self.__height == 0):
             return ""
+
         represent_string = ""
 
-        for q in range(self.__height):
-            represent_string += "#" * self.__width + "\n"
+        if isinstance(self.print_symbol, str):
+            for q in range(self.__height):
+                represent_string += self.print_symbol * self.__width + "\n"
+        elif isinstance(self.print_symbol, list):
+            for q in range(self.__height):
+                represent_string += str(self.print_symbol) *\
+                        self.__width + "\n"
+
         return represent_string.strip()
 
     def __repr__(self):
