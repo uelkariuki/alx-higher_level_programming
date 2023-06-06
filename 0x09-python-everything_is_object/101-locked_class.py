@@ -8,7 +8,7 @@ attribute is called first_name.
 """
 
 
-class LockedClass():
+class LockedClass:
     """ class LOckedClass """
 
     def __setattr__(self, name, value):
