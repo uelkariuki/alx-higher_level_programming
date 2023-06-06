@@ -82,17 +82,17 @@ class N_queens:
 def main():
     """ main function"""
     if len(sys.argv) != 2:
-        print("Usage: nqueens N\n")
+        print("Usage: nqueens N", end="\n")
         sys.exit(1)
 
     try:
         N = int(sys.argv[1])
     except ValueError:
-        print("N must be a number\n")
+        print("N must be a number", end="\n")
         sys.exit(1)
 
     if (N < 4):
-        print("N must be at least 4\n")
+        print("N must be at least 4", end="\n")
         sys.exit(1)
 
     # solve the n queens puzzle
