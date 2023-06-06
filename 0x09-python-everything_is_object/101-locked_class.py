@@ -10,7 +10,7 @@ attribute is called first_name.
 
 class LockedClass:
     """ class LOckedClass """
-    __slots__ = []
+    __slots__ = ["first_name"]
 
     def __setattr__(self, name, value):
         if name != "first_name":
