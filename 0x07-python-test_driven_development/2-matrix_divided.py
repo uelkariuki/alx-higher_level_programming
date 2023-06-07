@@ -39,15 +39,15 @@ def matrix_divided(matrix, div):
 
     if not isinstance(matrix, list):
         raise TypeError("matrix must be a matrix\
-                (list of lists) of integers/floats")
+ (list of lists) of integers/floats")
     for row in matrix:
         if not isinstance(row, list):
             raise TypeError("matrix must be a matrix\
-                    (list of lists) of integers/floats")
+ (list of lists) of integers/floats")
         if any(not isinstance(elem, (int, float)) for row in matrix for elem
                 in row):
             raise TypeError("matrix must be a matrix\
-                    (list of lists) of integers/floats")
+ (list of lists) of integers/floats")
 
     if not isinstance(div, (int, float)):
         raise TypeError("div must be a number")
