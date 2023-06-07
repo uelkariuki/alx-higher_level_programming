@@ -17,6 +17,7 @@ class TestMaxInteger(unittest.TestCase):
         self.assertAlmostEqual(max_integer([1e6, 2, 3]), 1000000)
         self.assertAlmostEqual(max_integer([1, 3, 3, 2]), 3)
         self.assertAlmostEqual(max_integer([-1, -3, -3, -2]), -1)
+        self.assertAlmostEqual(max_integer([1]), 1)
 
     def test_type(self):
         """ method to ensure only int are being passed """
