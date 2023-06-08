@@ -15,3 +15,5 @@ lib.print_python_string(s)
 s = "スプーンは存在しない"
 lib.print_python_string(s)
 s = b"The spoon does not exist"
+s = "La cuillÃ¨re n'existe pas, pas du tout!"
+lib.print_python_string(s)
