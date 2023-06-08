@@ -25,10 +25,12 @@ def text_indentation(text):
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    double_newline = lambda text, delimiter : (delimiter + "\n\n").join(text.split(delimiter))
+    def double_newline(text, delimiter):
+        """ function to add double newlines after specified delimiters"""
+        return (delimiter + "\n\n").join(text.split(delimiter))
+
     for delim in [".", "?", ":"]:
         text = double_newline(text, delim)
 
     text_result = "\n".join(map(str.strip, text.split("\n")))
-
     print(text_result, end=" ")
