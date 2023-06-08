@@ -33,4 +33,4 @@ def text_indentation(text):
         text = double_newline(text, delim)
 
     text_result = "\n".join(map(str.strip, text.split("\n")))
-    print(text_result, end=" ")
+    print(text_result, end="")
