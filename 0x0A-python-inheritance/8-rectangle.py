@@ -21,8 +21,6 @@ class BaseGeometry:
         """
         Method to validate integers
         """
-        self.__name = name
-        self.__value = value
         if type(name) is not str:
             raise TypeError("{} must be a string".format(name))
         if type(value) is not int:
@@ -39,8 +37,8 @@ class Rectangle(BaseGeometry):
         """
         instantation with width and height
         """
+        self.integer_validator("width", width)
+        self.integer_validator("height", height)
+
         self.__width = width
         self.__height = height
-
-        width = self.integer_validator("width", width)
-        height = self.integer_validator("height", height)
