@@ -20,9 +20,8 @@ class Square(Rectangle):
         super().__init__(size, size)
         self.__size = size
 
-
     def __str__(self):
-        """ 
+        """
         print() should print, and str() should return,
         the square description: [Square] <width>/<height>
         """
