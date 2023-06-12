@@ -15,6 +15,7 @@ class MyList(list):
         that prints the list, but sorted (ascending sort)
         """
         for elem in self:
-            if isinstance(elem, int):
-                result = sorted(self)
+            if not isinstance(elem, int):
+                raise TypeError
+        result = sorted(self)
         print(result)
