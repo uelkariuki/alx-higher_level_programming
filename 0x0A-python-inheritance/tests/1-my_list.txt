@@ -15,4 +15,8 @@ using ``print_sorted``
 >>> my_list.append(4)
 >>> print(my_list)
 [3, 2, 4]
->>> 
+>>> my_list.append("str")
+>>> my_list.print_sorted()
+Traceback (most recent call last):
+...
+TypeError: '<' not supported between instances of 'str' and 'int'
