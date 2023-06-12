@@ -21,9 +21,10 @@ class BaseGeometry:
         """
         Method to validate integers
         """
-        self.name = str(name)
+        self.name = name
         self.value = value
-
+        if not isinstance(name, str):
+            raise TypeError("{} must be a string".format(name))
         if not isinstance(value, int):
             raise TypeError("{} must be an integer".format(name))
         if value <= 0:
