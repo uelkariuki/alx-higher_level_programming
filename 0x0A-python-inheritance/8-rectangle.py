@@ -3,30 +3,10 @@
 """
 Write a class Rectangle that inherits from BaseGeometry (7-base_geometry.py).
 """
-
-
-class BaseGeometry:
-    """
-    class  BaseGeometry
-    """
-
-    def area(self):
-        """
-        Public instance method that raises an
-        Exception with the message area() is not implemented
-        """
-        raise Exception("area() is not implemented")
-
-    def integer_validator(self, name, value):
-        """
-        Method to validate integers
-        """
-        if type(name) is not str:
-            raise TypeError("{} must be a string".format(name))
-        if type(value) is not int:
-            raise TypeError("{} must be an integer".format(name))
-        if value <= 0:
-            raise ValueError("{} must be greater than 0".format(name))
+BaseGeometry = __import__('7-base_geometry').BaseGeometry
+"""
+gettin from the module 7-base_geometry
+"""
 
 
 class Rectangle(BaseGeometry):
@@ -36,9 +16,11 @@ class Rectangle(BaseGeometry):
     def __init__(self, width, height):
         """
         instantation with width and height
+        Args:
+        width: the width of rectangle
+        height: the height of rectangle
         """
-        super().integer_validator("width", width)
-        super().integer_validator("height", height)
-
+        self.integer_validator("width", width)
         self.__width = width
+        self.integer_validator("height", height)
         self.__height = height
