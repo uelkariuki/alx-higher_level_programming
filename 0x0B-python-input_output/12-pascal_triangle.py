@@ -12,7 +12,7 @@ def pascal_triangle(n):
     n will always be an integer
     """
     if n <= 0:
-        return []
+        return [[]]
     triangle = [[]]
 
     for a in range(1, n):
