@@ -27,6 +27,8 @@ try:
             for code in sorted(code_count.keys()):
                 if code_count[code] > 0:
                     print("{}: {}".format(code, code_count[code]))
+except (ValueError, IndexError):
+    pass
 except KeyboardInterrupt:
     pass
 finally:
