@@ -18,11 +18,17 @@ try:
         try:
             line_counter = line_counter + 1
             data = line.split()
-            status_code = int(data[-2])
-            file_size = int(data[-1])
-            total_size += file_size
-            if status_code in code_count:
-                code_count[status_code] += 1
+            try:
+                status_code = int(data[-2])
+                if status_code in code_count:
+                    code_count[status_code] += 1
+            except (ValueError, IndexError):
+                pass
+            try:
+                file_size = int(data[-1])
+                total_size += file_size
+            except (ValueError, IndexError):
+                pass
             if line_counter % 10 == 0:
                 print("File size: {}".format(total_size))
                 for code in sorted(code_count.keys()):
