@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 
+from io import StringIO  # importing StringIO from io
+from models import rectangle  # importing rectangle from models"""
+import sys  # importing the sys module"""
 import unittest
 """ importing the unittest module"""
-from models import rectangle
-""" importing rectangle from models"""
 
 """
 Write the class Rectangle that inherits from Base: Question 2: First Rectangle
@@ -37,13 +38,13 @@ class TestRectangle(unittest.TestCase):
         the number of instances created.
         """
         r1 = rectangle.Rectangle(10, 2)
-        self.assertEqual(r1.id, 1)
+        self.assertEqual(r1.id, 3)
         r2 = rectangle.Rectangle(2, 10)
-        self.assertEqual(r2.id, 2)
+        self.assertEqual(r2.id, 4)
         r3 = rectangle.Rectangle(2, 10, 0)
-        self.assertEqual(r3.id, 3)
+        self.assertEqual(r3.id, 5)
         r4 = rectangle.Rectangle(2, 10, 0, 0)
-        self.assertEqual(r4.id, 4)
+        self.assertEqual(r4.id, 6)
         r5 = rectangle.Rectangle(10, 2, 0, 0, 12)
         self.assertEqual(r5.id, 12)
         rec = rectangle.Rectangle(20, 30)
@@ -124,3 +125,30 @@ class TestRectangle(unittest.TestCase):
             rectangle.Rectangle(3, 2, -4, 4, 16)
         with self.assertRaises(ValueError):
             rectangle.Rectangle(3, 2, 4, -6, 16)
+
+    def test_display_small_rec(self):
+        """ testing how rectangle is displayed using #"""
+        expected_output = "##\n##\n"
+
+        capture_output = StringIO()
+        sys.stdout = capture_output
+
+        rect = rectangle.Rectangle(2, 2)
+        rect.display()
+
+        display_output = capture_output.getvalue()
+        sys.stdout = sys.__stdout__
+
+        self.assertMultiLineEqual(display_output, expected_output)
+
+    def test_display_large_rec(self):
+        """ display large rec using #"""
+        expected_output = "####\n####\n####\n####\n####\n####\n"
+        capture_output = StringIO()
+
+        sys.stdout = capture_output
+        rect = rectangle.Rectangle(4, 6)
+        rect.display()
+        display_output = capture_output.getvalue()
+        sys.stdout = sys.__stdout__
+        self.assertMultiLineEqual(display_output, expected_output)
