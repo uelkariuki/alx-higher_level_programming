@@ -244,3 +244,21 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(arg_test.__str__(), "[Rectangle] (89) 4/10 - 2/3")
         arg_test.update(89, 2, 3, 4, 5)
         self.assertEqual(arg_test.__str__(), "[Rectangle] (89) 4/5 - 2/3")
+
+    def test_update_args_and_kwargs(self):
+        """ test the implementation of *args and *kwargs"""
+        kwarg_test = rectangle.Rectangle(10, 10, 10, 10, 1)
+        self.assertEqual(kwarg_test.width, 10)
+        self.assertEqual(kwarg_test.height, 10)
+        self.assertEqual(kwarg_test.x, 10)
+        self.assertEqual(kwarg_test.y, 10)
+        self.assertEqual(kwarg_test.__str__(), "[Rectangle] (1) 10/10 - 10/10")
+
+        kwarg_test.update(height=1)
+        self.assertEqual(kwarg_test.__str__(), "[Rectangle] (1) 10/10 - 10/1")
+        kwarg_test.update(width=1, x=2)
+        self.assertEqual(kwarg_test.__str__(), "[Rectangle] (1) 2/10 - 1/1")
+        kwarg_test.update(y=1, width=2, x=3, id=89)
+        self.assertEqual(kwarg_test.__str__(), "[Rectangle] (89) 3/1 - 2/1")
+        kwarg_test.update(x=1, height=2, y=3, width=4)
+        self.assertEqual(kwarg_test.__str__(), "[Rectangle] (89) 1/3 - 4/2")
