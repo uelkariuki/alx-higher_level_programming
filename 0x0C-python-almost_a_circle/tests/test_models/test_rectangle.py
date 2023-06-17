@@ -222,3 +222,25 @@ class TestRectangle(unittest.TestCase):
         display_output = capture_output.getvalue()
         sys.stdout = sys.__stdout__
         self.assertMultiLineEqual(display_output, expected_output)
+
+    def test_update_args(self):
+        """ test the implementation of *args"""
+
+        arg_test = rectangle.Rectangle(10, 10, 10, 10, 1)
+        self.assertEqual(arg_test.width, 10)
+        self.assertEqual(arg_test.height, 10)
+        self.assertEqual(arg_test.x, 10)
+        self.assertEqual(arg_test.y, 10)
+        self.assertEqual(arg_test.id, 1)
+        self.assertEqual(arg_test.__str__(), "[Rectangle] (1) 10/10 - 10/10")
+
+        arg_test.update(89)
+        self.assertEqual(arg_test.__str__(), "[Rectangle] (89) 10/10 - 10/10")
+        arg_test.update(89, 2)
+        self.assertEqual(arg_test.__str__(), "[Rectangle] (89) 10/10 - 2/10")
+        arg_test.update(89, 2, 3)
+        self.assertEqual(arg_test.__str__(), "[Rectangle] (89) 10/10 - 2/3")
+        arg_test.update(89, 2, 3, 4)
+        self.assertEqual(arg_test.__str__(), "[Rectangle] (89) 4/10 - 2/3")
+        arg_test.update(89, 2, 3, 4, 5)
+        self.assertEqual(arg_test.__str__(), "[Rectangle] (89) 4/5 - 2/3")
