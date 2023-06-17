@@ -38,13 +38,13 @@ class TestRectangle(unittest.TestCase):
         the number of instances created.
         """
         r1 = rectangle.Rectangle(10, 2)
-        self.assertEqual(r1.id, 3)
+        self.assertEqual(r1.id, 4)
         r2 = rectangle.Rectangle(2, 10)
-        self.assertEqual(r2.id, 4)
+        self.assertEqual(r2.id, 5)
         r3 = rectangle.Rectangle(2, 10, 0)
-        self.assertEqual(r3.id, 5)
+        self.assertEqual(r3.id, 6)
         r4 = rectangle.Rectangle(2, 10, 0, 0)
-        self.assertEqual(r4.id, 6)
+        self.assertEqual(r4.id, 7)
         r5 = rectangle.Rectangle(10, 2, 0, 0, 12)
         self.assertEqual(r5.id, 12)
         rec = rectangle.Rectangle(20, 30)
@@ -152,3 +152,24 @@ class TestRectangle(unittest.TestCase):
         display_output = capture_output.getvalue()
         sys.stdout = sys.__stdout__
         self.assertMultiLineEqual(display_output, expected_output)
+
+    def test__str__override(self):
+        """
+        Update the class Rectangle by overriding
+        the __str__ method so that it returns
+        [Rectangle] (<id>) <x>/<y> - <width>/<height>
+        """
+        str1 = rectangle.Rectangle(4, 6, 2, 1, 12)
+        self.assertEqual(str1.width, 4)
+        self.assertEqual(str1.height, 6)
+        self.assertEqual(str1.x, 2)
+        self.assertEqual(str1.y, 1)
+        self.assertEqual(str1.id, 12)
+        self.assertEqual(str1.__str__(), "[Rectangle] (12) 2/1 - 4/6")
+        str2 = rectangle.Rectangle(5, 5, 1)
+        self.assertEqual(str2.width, 5)
+        self.assertEqual(str2.height, 5)
+        self.assertEqual(str2.x, 1)
+        self.assertEqual(str2.y, 0)
+        self.assertEqual(str2.id, 1)
+        self.assertEqual(str2.__str__(), "[Rectangle] (1) 1/0 - 5/5")
