@@ -16,6 +16,7 @@ class TestBase(unittest.TestCase):
     as this class will be the "base" of other classes in this project
     """
     def test_module_documentation(self):
+        """ method to ascertain that module documentation is present"""
         q1_module_doc = base.__doc__
         self.assertTrue(len(q1_module_doc) > 1,
                         "documentation for q1 module not found")
@@ -63,6 +64,11 @@ class TestBase(unittest.TestCase):
 
         b5 = base.Base()
         self.assertEqual(b5.id, 9)
+
+    def test_with_no_print_arguments(self):
+        """ test with no print args"""
+        with self.assertRaises(NameError):
+            Base()
 
 
 def test_init_documentation(self):
