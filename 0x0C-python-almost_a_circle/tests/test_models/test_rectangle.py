@@ -76,7 +76,7 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError):
             rectangle.Rectangle({}, {}, {}, {}, 16)
         with self.assertRaises(TypeError):
-            rectangle.Rectangle(1, 4, 4,"animal", 16)
+            rectangle.Rectangle(1, 4, 4, "animal", 16)
         with self.assertRaises(TypeError):
             rectangle.Rectangle(1.1, 2, 3, 4, 16)
         with self.assertRaises(TypeError):
@@ -88,7 +88,7 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError):
             rectangle.Rectangle(True, 2, 3, 4, 16)
         with self.assertRaises(TypeError):
-            rectangle.Rectangle(1, 2, False,4, 16)
+            rectangle.Rectangle(1, 2, False, 4, 16)
         with self.assertRaises(TypeError):
             rectangle.Rectangle(1, 2, 3, True, 16)
         with self.assertRaises(TypeError):
@@ -111,9 +111,3 @@ class TestRectangle(unittest.TestCase):
             rectangle.Rectangle(3, 2, -4, 4, 16)
         with self.assertRaises(ValueError):
             rectangle.Rectangle(3, 2, 4, -6, 16)
-
-
-
-
-
-
