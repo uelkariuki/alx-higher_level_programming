@@ -93,10 +93,10 @@ class Rectangle(Base):
         don’t need to handle x and y here.
         """
 
-        for q in range(self.height):
-            for r in range(self.width):
-                print("#", end="")
+        for a in range(self.y):
             print()
+        for q in range(self.height):
+            print((" " * self.x) + ("#" * self.width))
 
     def __str__(self):
         """ over riding the __str__ method so that it returns

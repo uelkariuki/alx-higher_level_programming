@@ -38,13 +38,13 @@ class TestRectangle(unittest.TestCase):
         the number of instances created.
         """
         r1 = rectangle.Rectangle(10, 2)
-        self.assertEqual(r1.id, 4)
+        self.assertEqual(r1.id, 8)
         r2 = rectangle.Rectangle(2, 10)
-        self.assertEqual(r2.id, 5)
+        self.assertEqual(r2.id, 9)
         r3 = rectangle.Rectangle(2, 10, 0)
-        self.assertEqual(r3.id, 6)
+        self.assertEqual(r3.id, 10)
         r4 = rectangle.Rectangle(2, 10, 0, 0)
-        self.assertEqual(r4.id, 7)
+        self.assertEqual(r4.id, 11)
         r5 = rectangle.Rectangle(10, 2, 0, 0, 12)
         self.assertEqual(r5.id, 12)
         rec = rectangle.Rectangle(20, 30)
@@ -173,3 +173,52 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(str2.y, 0)
         self.assertEqual(str2.id, 1)
         self.assertEqual(str2.__str__(), "[Rectangle] (1) 1/0 - 5/5")
+
+    def test_updated_display_small_rec(self):
+        """ display small rec using # and x, y coordinate"""
+        expected_output = "\n\n ###\n ###\n"
+        capture_output = StringIO()
+
+        sys.stdout = capture_output
+        rect_updated = rectangle.Rectangle(3, 2, 1, 2)
+        rect_updated.display()
+        display_output = capture_output.getvalue()
+        sys.stdout = sys.__stdout__
+        self.assertMultiLineEqual(display_output, expected_output)
+
+    def test_updated_display_rec(self):
+        """ display rec using # and x, y coordinate"""
+        expected_output = "\n\n\n\n   #####\n   #####\n   #####\n"
+        capture_output = StringIO()
+
+        sys.stdout = capture_output
+        rect_updated = rectangle.Rectangle(5, 3, 3, 4)
+        rect_updated.display()
+        display_output = capture_output.getvalue()
+        sys.stdout = sys.__stdout__
+        self.assertMultiLineEqual(display_output, expected_output)
+
+    def test_updated_display_rec_1(self):
+        """ display rec using # and x, y coordinate"""
+        expected_output = "\n\n  ##\n  ##\n  ##\n"
+        capture_output = StringIO()
+
+        sys.stdout = capture_output
+        rect_updated = rectangle.Rectangle(2, 3, 2, 2)
+        rect_updated.display()
+        display_output = capture_output.getvalue()
+        sys.stdout = sys.__stdout__
+        self.assertMultiLineEqual(display_output, expected_output)
+
+    def test_updated_display_rec_2(self):
+        """ display rec using # and x, y coordinate"""
+        expected_output = " ###\n ###\n"
+        capture_output = StringIO()
+
+        sys.stdout = capture_output
+        rect_updated = rectangle.Rectangle(3, 2, 1, 0)
+        rect_updated.display()
+
+        display_output = capture_output.getvalue()
+        sys.stdout = sys.__stdout__
+        self.assertMultiLineEqual(display_output, expected_output)
