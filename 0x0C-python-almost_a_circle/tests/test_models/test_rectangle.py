@@ -52,11 +52,24 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(rec.x, 0)
         self.assertEqual(rec.y, 0)
         rec1 = rectangle.Rectangle(20, 30, 2, 7, 15)
-        self.assertEqual(rec.width, 20)
-        self.assertEqual(rec.height, 30)
-        self.assertEqual(rec.x, 0)
-        self.assertEqual(rec.y, 0)
+        self.assertEqual(rec1.width, 20)
+        self.assertEqual(rec1.height, 30)
+        self.assertEqual(rec1.x, 2)
+        self.assertEqual(rec1.y, 7)
         self.assertEqual(rec1.id, 15)
+
+        area_rec = rectangle.Rectangle(3, 2)
+        self.assertEqual(area_rec.width, 3)
+        self.assertEqual(area_rec.height, 2)
+        self.assertEqual(area_rec.area(), 6)
+        area_rec_1 = rectangle.Rectangle(2, 10)
+        self.assertEqual(area_rec_1.width, 2)
+        self.assertEqual(area_rec_1.height, 10)
+        self.assertEqual(area_rec_1.area(), 20)
+        area_rec_2 = rectangle.Rectangle(8, 7, 0, 0, 12)
+        self.assertEqual(area_rec_2.width, 8)
+        self.assertEqual(area_rec_2.height, 7)
+        self.assertEqual(area_rec_2.area(), 56)
 
     def test_with_no_arguments(self):
         """ test with no args"""
