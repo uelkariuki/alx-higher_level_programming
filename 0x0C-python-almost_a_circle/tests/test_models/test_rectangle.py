@@ -62,3 +62,58 @@ class TestRectangle(unittest.TestCase):
         """ test with no args"""
         with self.assertRaises(TypeError):
             rectangle.Rectangle()
+
+    def test_type(self):
+        """ test to ensure only int are passed"""
+        with self.assertRaises(TypeError):
+            rectangle.Rectangle("hair", 2, 0, 0, 10)
+        with self.assertRaises(TypeError):
+            rectangle.Rectangle(1, "dog", 3, 4, 16)
+        with self.assertRaises(TypeError):
+            rectangle.Rectangle(1, 2.4, 3, 4, 16)
+        with self.assertRaises(TypeError):
+            rectangle.Rectangle(1, 2, "water", 4, 16)
+        with self.assertRaises(TypeError):
+            rectangle.Rectangle({}, {}, {}, {}, 16)
+        with self.assertRaises(TypeError):
+            rectangle.Rectangle(1, 4, 4,"animal", 16)
+        with self.assertRaises(TypeError):
+            rectangle.Rectangle(1.1, 2, 3, 4, 16)
+        with self.assertRaises(TypeError):
+            rectangle.Rectangle(1, 2, 3.3, 4, 16)
+        with self.assertRaises(TypeError):
+            rectangle.Rectangle(1, 2, 3, 4.5, 16)
+        with self.assertRaises(TypeError):
+            rectangle.Rectangle(1, True, 3, 4, 16)
+        with self.assertRaises(TypeError):
+            rectangle.Rectangle(True, 2, 3, 4, 16)
+        with self.assertRaises(TypeError):
+            rectangle.Rectangle(1, 2, False,4, 16)
+        with self.assertRaises(TypeError):
+            rectangle.Rectangle(1, 2, 3, True, 16)
+        with self.assertRaises(TypeError):
+            rectangle.Rectangle(1, 2+3j, 3, 4, 16)
+        with self.assertRaises(TypeError):
+            rectangle.Rectangle(1, 2, 2+3j, 4, 16)
+        with self.assertRaises(TypeError):
+            rectangle.Rectangle(1, 2, 3, 2+3j, 16)
+        with self.assertRaises(TypeError):
+            rectangle.Rectangle(2+3j, 1, 3, 4, 16)
+        with self.assertRaises(ValueError):
+            rectangle.Rectangle(0, 2, 3, 4, 16)
+        with self.assertRaises(ValueError):
+            rectangle.Rectangle(1, 0, 3, 4, 16)
+        with self.assertRaises(ValueError):
+            rectangle.Rectangle(-3, 2, 3, 4, 16)
+        with self.assertRaises(ValueError):
+            rectangle.Rectangle(1, -2, 3, 4, 16)
+        with self.assertRaises(ValueError):
+            rectangle.Rectangle(3, 2, -4, 4, 16)
+        with self.assertRaises(ValueError):
+            rectangle.Rectangle(3, 2, 4, -6, 16)
+
+
+
+
+
+
