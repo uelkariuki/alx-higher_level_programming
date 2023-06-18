@@ -62,3 +62,21 @@ class Base:
         else:
             if type(json_string) is str:
                 return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """
+        class method def create(cls, **dictionary): that
+        returns an instance with all attributes already set:
+        """
+        dummy_instance = cls(1, 1, 1)
+        dummy_instance.update(**dictionary)
+        return dummy_instance
+
+    def update(self, *args, **kwargs):
+        """
+        update method to be called to the dummy instance to
+        apply the real values
+        """
+        for key, value in dictionaty.items():
+            return (self, key, value)
