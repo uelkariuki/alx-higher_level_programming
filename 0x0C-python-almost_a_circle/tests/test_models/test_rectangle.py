@@ -38,20 +38,36 @@ class TestRectangle(unittest.TestCase):
         the number of instances created.
         """
         r1 = rectangle.Rectangle(10, 2)
-        self.assertEqual(r1.id, 8)
+        self.assertEqual(r1.width, 10)
+        self.assertEqual(r1.height, 2)
+        self.assertEqual(r1.id, 10)
         r2 = rectangle.Rectangle(2, 10)
-        self.assertEqual(r2.id, 9)
+        self.assertEqual(r2.width, 2)
+        self.assertEqual(r2.height, 10)
+        self.assertEqual(r2.id, 11)
         r3 = rectangle.Rectangle(2, 10, 0)
-        self.assertEqual(r3.id, 10)
+        self.assertEqual(r3.width, 2)
+        self.assertEqual(r3.height, 10)
+        self.assertEqual(r3.x, 0)
+        self.assertEqual(r3.id, 12)
         r4 = rectangle.Rectangle(2, 10, 0, 0)
-        self.assertEqual(r4.id, 11)
+        self.assertEqual(r4.width, 2)
+        self.assertEqual(r4.height, 10)
+        self.assertEqual(r4.x, 0)
+        self.assertEqual(r4.y, 0)
+        self.assertEqual(r4.id, 13)
         r5 = rectangle.Rectangle(10, 2, 0, 0, 12)
+        self.assertEqual(r5.width, 10)
+        self.assertEqual(r5.height, 2)
+        self.assertEqual(r5.x, 0)
+        self.assertEqual(r5.y, 0)
         self.assertEqual(r5.id, 12)
         rec = rectangle.Rectangle(20, 30)
         self.assertEqual(rec.width, 20)
         self.assertEqual(rec.height, 30)
         self.assertEqual(rec.x, 0)
         self.assertEqual(rec.y, 0)
+        self.assertEqual(rec.id, 14)
         rec1 = rectangle.Rectangle(20, 30, 2, 7, 15)
         self.assertEqual(rec1.width, 20)
         self.assertEqual(rec1.height, 30)
@@ -262,3 +278,30 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(kwarg_test.__str__(), "[Rectangle] (89) 3/1 - 2/1")
         kwarg_test.update(x=1, height=2, y=3, width=4)
         self.assertEqual(kwarg_test.__str__(), "[Rectangle] (89) 1/3 - 4/2")
+
+    def test_to_dictionary(self):
+        """
+        test the impelementation of Rectangle instance to
+        dictionary representation
+        """
+        recty1 = rectangle.Rectangle(10, 2, 1, 9)
+
+        self.assertEqual(recty1.width, 10)
+        self.assertEqual(recty1.height, 2)
+        self.assertEqual(recty1.x, 1)
+        self.assertEqual(recty1.y, 9)
+        self.assertEqual(recty1.id, 4)
+        self.assertEqual(recty1.__str__(), "[Rectangle] (4) 1/9 - 10/2")
+        recty_dict = recty1.to_dictionary()
+        self.assertEqual(recty_dict.__str__(),
+                         "{'id': 4, 'width': 10, 'height': 2, 'x': 1, 'y': 9}")
+        self.assertEqual(type(recty_dict), dict, "<class 'dict'>")
+
+        recty2 = rectangle.Rectangle(1, 1)
+        self.assertEqual(recty2.width, 1)
+        self.assertEqual(recty2.height, 1)
+        self.assertEqual(recty2.__str__(), "[Rectangle] (5) 0/0 - 1/1")
+
+        recty2.update(**recty_dict)
+        self.assertEqual(recty2.__str__(), "[Rectangle] (4) 1/9 - 10/2")
+        self.assertEqual(recty1 == recty2.__str__(), False)
