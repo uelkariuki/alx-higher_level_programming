@@ -130,6 +130,3 @@ class TestsSquare(unittest.TestCase):
         self.assertEqual(sq_arg_test.__str__(), "[Square] (1) 12/1 - 7")
         sq_arg_test.update(size=7, id=89, y=1)
         self.assertEqual(sq_arg_test.__str__(), "[Square] (89) 12/1 - 7")
-
-
-

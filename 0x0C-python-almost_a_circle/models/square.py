@@ -39,7 +39,6 @@ class Square(Rectangle):
             for key, value in kwargs.items():
                 setattr(self, key, value)
 
-
     def __str__(self):
         """ the overloading __str__ method"""
         return ("[Square] ({}) {}/{} - {}".format(self.id,
