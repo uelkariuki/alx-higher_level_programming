@@ -3,6 +3,11 @@
 from models import base
 """ importing base """
 from models import rectangle
+""" importing rectangle"""
+from models import square
+""" importing square"""
+import os
+""" import os"""
 import unittest
 """ importing the unittest module"""
 
@@ -40,32 +45,32 @@ class TestBase(unittest.TestCase):
         object1 = base.Base()
         object2 = base.Base()
 
-        self.assertEqual(object2.id, 7)
+        self.assertEqual(object2.id, 15)
 
         object3 = base.Base()
         object4 = base.Base()
         object5 = base.Base()
 
-        self.assertEqual(object5.id, 10)  # 10 instances created
+        self.assertEqual(object5.id, 18)  # 18 instances created
 
     def test_values(self):
         """ ascertain the values printed by Base.id representing
         the number of instances created.
         """
         b1 = base.Base()
-        self.assertEqual(b1.id, 11)
+        self.assertEqual(b1.id, 19)
 
         b2 = base.Base()
-        self.assertEqual(b2.id, 12)
+        self.assertEqual(b2.id, 20)
 
         b3 = base.Base()
-        self.assertEqual(b3.id, 13)
+        self.assertEqual(b3.id, 21)
 
         b4 = base.Base(12)
         self.assertEqual(b4.id, 12)
 
         b5 = base.Base()
-        self.assertEqual(b5.id, 14)
+        self.assertEqual(b5.id, 22)
 
     def test_with_no_print_arguments(self):
         """ test with no print args"""
@@ -79,10 +84,10 @@ class TestBase(unittest.TestCase):
         r1 = rectangle.Rectangle(10, 7, 2, 8)
         dictionary = r1.to_dictionary()
         json_dictionary = base.Base.to_json_string([dictionary])
-        self.assertEqual(dictionary.__str__(),
-                         "{'id': 5, 'width': 10, 'height': 7, 'x': 2, 'y': 8}")
+        self.assertEqual(dictionary.__str__(), "{'id': 13,\
+ 'width': 10, 'height': 7, 'x': 2, 'y': 8}")
         self.assertEqual(type(dictionary), dict, "<class 'dict'>")
-        self.assertEqual(json_dictionary.__str__(), '[{"id": 5,\
+        self.assertEqual(json_dictionary.__str__(), '[{"id": 13,\
  "width": 10, "height": 7, "x": 2, "y": 8}]')
         self.assertEqual(type(json_dictionary), str, "<class 'str'>")
 
@@ -105,9 +110,9 @@ class TestBase(unittest.TestCase):
         r2_to_file = rectangle.Rectangle(2, 4)
         rectangle.Rectangle.save_to_file([r1_to_file, r2_to_file])
         with open("Rectangle.json", "r") as file:
-            self.assertEqual(file.read().__str__(), '[{"id": 3,\
+            self.assertEqual(file.read().__str__(), '[{"id": 11,\
  "width": 10, "height": 7, "x": 2, "y": 8},\
- {"id": 4, "width": 2, "height": 4, "x": 0, "y": 0}]')
+ {"id": 12, "width": 2, "height": 4, "x": 0, "y": 0}]')
 
     def test_empty_list_obj(self):
         """ test empty list_obj"""
@@ -153,7 +158,7 @@ class TestBase(unittest.TestCase):
 
     def test_Dictionary_to_Instance(self):
         """
-        Testing the implememtation of question 18 dictionary
+        Testing the implementation of question 18 dictionary
         to instance
         """
         rect1 = rectangle.Rectangle(3, 5, 1)
@@ -166,6 +171,49 @@ class TestBase(unittest.TestCase):
         self.assertEqual(rect2.__str__(), "[Rectangle] (1) 1/0 - 3/5")
         self.assertEqual(rect1 is rect2.__str__(), False)
         self.assertEqual(rect1 == rect2.__str__(), False)
+
+    def test_File_to_instances(self):
+        """
+        Test case for the implementation of question 19 file to
+        instances
+        """
+        R1 = rectangle.Rectangle(10, 7, 2, 8)
+        self.assertEqual(R1.width, 10)
+        self.assertEqual(R1.height, 7)
+        self.assertEqual(R1.x, 2)
+        self.assertEqual(R1.y, 8)
+        R2 = rectangle.Rectangle(2, 4)
+        self.assertEqual(R2.width, 2)
+        self.assertEqual(R2.height, 4)
+        list_rectangles_input = [R1, R2]
+        rectangle.Rectangle.save_to_file(list_rectangles_input)
+        list_rectangles_output = rectangle.Rectangle.load_from_file()
+        for q in range(len(list_rectangles_input)):
+            self.assertEqual(str(list_rectangles_input[q]),
+                             str(list_rectangles_output[q]))
+
+        S1 = square.Square(5)
+        self.assertEqual(S1.size, 5)
+        S2 = square.Square(7, 9, 1)
+        self.assertEqual(S2.size, 7)
+        self.assertEqual(S2.x, 9)
+        self.assertEqual(S2.y, 1)
+        list_squares_input = [S1, S2]
+        square.Square.save_to_file(list_squares_input)
+        list_squares_output = square.Square.load_from_file()
+        for q in range(len(list_squares_input)):
+            self.assertEqual(str(list_squares_input[q]),
+                             str(list_squares_output[q]))
+
+    def test_file_not_exist(self):
+        """
+        Test case for If the file doesn’t exist, return
+        an empty list
+        """
+        filename = "no_file.json"
+        if not os.path.isfile(filename):
+            instance = base.Base.load_from_file()
+            self.assertEqual(instance, [])
 
 
 def test_init_documentation(self):

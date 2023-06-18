@@ -5,6 +5,8 @@ Write the first class Base: (Question 1)
 """
 import json
 """ importing json"""
+import os
+""" importing os to check if file exists"""
 
 
 class Base:
@@ -80,3 +82,23 @@ class Base:
         """
         for key, value in dictionaty.items():
             return (self, key, value)
+
+    @classmethod
+    def load_from_file(cls):
+        """
+        class method def load_from_file(cls): that
+        returns a list of instances:
+        """
+        filename = "{}.json".format(cls.__name__)
+        total_instances = []
+        if not os.path.isfile(filename):
+            return total_instances
+        else:
+            with open(filename, "r") as f:
+                json_data = f.read()
+                dictionary_data = cls.from_json_string(json_data)
+                for items in dictionary_data:
+                    instance = cls.create(**items)
+                    total_instances.append(instance)
+
+        return total_instances
