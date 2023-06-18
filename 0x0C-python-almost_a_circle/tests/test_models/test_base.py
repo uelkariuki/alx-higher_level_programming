@@ -116,6 +116,39 @@ class TestBase(unittest.TestCase):
         with open("Rectangle.json", "r") as file:
             self.assertEqual(file.read().__str__(), '[]')
 
+    def test_JSON_string_to_dictionary(self):
+        """ test json string to dictionary"""
+        list_input = [
+                {'id': 89, 'width': 10, 'height': 4},
+                {'id': 7, 'width': 1, 'height': 7}
+        ]
+        json_list_input = rectangle.Rectangle.to_json_string(list_input)
+        list_output = rectangle.Rectangle.from_json_string(json_list_input)
+        self.assertEqual(type(list_input), list,
+                         "[<class 'list'>] [{'height': 4,\
+ 'width': 10, 'id': 89}, {'height': 7, 'width': 1, 'id': 7}]")
+        self.assertEqual(type(json_list_input), str,
+                         "[<class 'str'>] [{\"height\": 4, \"width\": 10,\
+ \"id\": 89}, {\"height\": 7, \"width\": 1, \"id\": 7}]")
+        self.assertEqual(type(list_output), list,
+                         "[<class 'list'>] [{'height': 4, 'width': 10,\
+ 'id': 89}, {'height': 7, 'width': 1, 'id': 7}]")
+        self.assertEqual(len(list_input), len(list_output))
+        self.assertEqual(list_input[0]['id'], list_output[0]['id'])
+        self.assertEqual(list_input[1]['width'], list_output[1]['width'])
+
+    def test_empty_json_string(self):
+        """ test empty json string"""
+        empty_json = "[]"
+        json_empty_result = base.Base.from_json_string(empty_json)
+        self.assertEqual(json_empty_result, [])
+
+    def test_none_json_string(self):
+        """ test using none string"""
+        None_str = None
+        None_json = base.Base.from_json_string(None_str)
+        self.assertEqual(None_json, [])
+
 
 def test_init_documentation(self):
     """ method to ascertain that the init documentation is 0"""
