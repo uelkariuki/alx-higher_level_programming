@@ -86,13 +86,13 @@ class TestBase(unittest.TestCase):
  "width": 10, "height": 7, "x": 2, "y": 8}]')
         self.assertEqual(type(json_dictionary), str, "<class 'str'>")
 
-    def test_to_join_str_empty(self):
+    def test_to_json_str_empty(self):
         """ test with an empty list"""
         empty_list = []
         json_str_1 = base.Base.to_json_string(empty_list)
         self.assertEqual(json_str_1.__str__(), '[]')
 
-    def test_to_join_str_none(self):
+    def test_to_json_str_none(self):
         """ test using none list"""
         None_list = None
         json_str_1 = base.Base.to_json_string(None_list)
