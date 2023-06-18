@@ -136,6 +136,8 @@ class TestBase(unittest.TestCase):
         self.assertEqual(len(list_input), len(list_output))
         self.assertEqual(list_input[0]['id'], list_output[0]['id'])
         self.assertEqual(list_input[1]['width'], list_output[1]['width'])
+        for q in range(len(list_output)):
+            self.assertDictEqual(list_input[q], list_output[q])
 
     def test_empty_json_string(self):
         """ test empty json string"""
