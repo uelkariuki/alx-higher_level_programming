@@ -43,3 +43,16 @@ class Square(Rectangle):
         """ the overloading __str__ method"""
         return ("[Square] ({}) {}/{} - {}".format(self.id,
                 self.x, self.y, self.size))
+
+    def to_dictionary(self):
+        """
+        Update the class Square by adding the public method
+        def to_dictionary(self): that returns the dictionary
+        representation of a Square
+        """
+        return {
+            "id": self.id,
+            "size": self.size,
+            "x": self.x,
+            "y": self.y
+        }

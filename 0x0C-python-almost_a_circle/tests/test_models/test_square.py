@@ -40,7 +40,7 @@ class TestsSquare(unittest.TestCase):
         """
 
         s1 = square.Square(5)
-        self.assertEqual(s1.__str__(), "[Square] (6) 0/0 - 5")
+        self.assertEqual(s1.__str__(), "[Square] (8) 0/0 - 5")
         self.assertEqual(s1.area(), 25)
 
     def test_square_display(self):
@@ -63,7 +63,7 @@ class TestsSquare(unittest.TestCase):
         that inherits from Rectangle
         """
         s2 = square.Square(2, 2)
-        self.assertEqual(s2.__str__(), "[Square] (7) 2/0 - 2")
+        self.assertEqual(s2.__str__(), "[Square] (9) 2/0 - 2")
         self.assertEqual(s2.area(), 4)
 
     def test_display_small_square_with_x_coordinate(self):
@@ -83,7 +83,7 @@ class TestsSquare(unittest.TestCase):
         that inherits from Rectangle
         """
         s3 = square.Square(3, 1, 3)
-        self.assertEqual(s3.__str__(), "[Square] (8) 1/3 - 3")
+        self.assertEqual(s3.__str__(), "[Square] (10) 1/3 - 3")
         self.assertEqual(s3.area(), 9)
 
     def test_display_small_square_with_both_x_y_coordinate(self):
@@ -101,10 +101,10 @@ class TestsSquare(unittest.TestCase):
     def test_square_size_setter(self):
         """ method to test the square size"""
         squ1 = square.Square(5)
-        self.assertEqual(squ1.__str__(), "[Square] (5) 0/0 - 5")
+        self.assertEqual(squ1.__str__(), "[Square] (7) 0/0 - 5")
         self.assertEqual(squ1.size.__str__(), "5")
         squ1.size = 10
-        self.assertEqual(squ1.__str__(), "[Square] (5) 0/0 - 10")
+        self.assertEqual(squ1.__str__(), "[Square] (7) 0/0 - 10")
         with self.assertRaises(TypeError):
             squ1.size("9")
 
@@ -130,3 +130,30 @@ class TestsSquare(unittest.TestCase):
         self.assertEqual(sq_arg_test.__str__(), "[Square] (1) 12/1 - 7")
         sq_arg_test.update(size=7, id=89, y=1)
         self.assertEqual(sq_arg_test.__str__(), "[Square] (89) 12/1 - 7")
+
+    def test_dict_representation(self):
+        """
+        test case to test the implementation of the
+        Square instance to dictionary representation (Q14)
+        """
+        squay1 = square.Square(10, 2, 1)
+
+        self.assertEqual(squay1.size, 10)
+        self.assertEqual(squay1.x, 2)
+        self.assertEqual(squay1.y, 1)
+        self.assertEqual(squay1.id, 2)
+        self.assertEqual(squay1.__str__(), "[Square] (2) 2/1 - 10")
+        squay_dict = squay1.to_dictionary()
+        self.assertEqual(squay_dict.__str__(),
+                         "{'id': 2, 'size': 10, 'x': 2, 'y': 1}")
+        self.assertEqual(type(squay_dict), dict, "<class 'dict'>")
+
+        squay2 = square.Square(1, 1)
+        self.assertEqual(squay2.size, 1)
+        self.assertEqual(squay2.x, 1)
+        self.assertEqual(squay2.id, 3)
+        self.assertEqual(squay2.__str__(), "[Square] (3) 1/0 - 1")
+
+        squay2.update(**squay_dict)
+        self.assertEqual(squay2.__str__(), "[Square] (2) 2/1 - 10")
+        self.assertEqual(squay1 == squay2.__str__(), False)
