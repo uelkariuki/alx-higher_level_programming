@@ -40,32 +40,32 @@ class TestBase(unittest.TestCase):
         object1 = base.Base()
         object2 = base.Base()
 
-        self.assertEqual(object2.id, 3)
+        self.assertEqual(object2.id, 5)
 
         object3 = base.Base()
         object4 = base.Base()
         object5 = base.Base()
 
-        self.assertEqual(object5.id, 6)  # 6 instances created
+        self.assertEqual(object5.id, 8)  # 6 instances created
 
     def test_values(self):
         """ ascertain the values printed by Base.id representing
         the number of instances created.
         """
         b1 = base.Base()
-        self.assertEqual(b1.id, 7)
+        self.assertEqual(b1.id, 9)
 
         b2 = base.Base()
-        self.assertEqual(b2.id, 8)
+        self.assertEqual(b2.id, 10)
 
         b3 = base.Base()
-        self.assertEqual(b3.id, 9)
+        self.assertEqual(b3.id, 11)
 
         b4 = base.Base(12)
         self.assertEqual(b4.id, 12)
 
         b5 = base.Base()
-        self.assertEqual(b5.id, 10)
+        self.assertEqual(b5.id, 12)
 
     def test_with_no_print_arguments(self):
         """ test with no print args"""
@@ -80,11 +80,41 @@ class TestBase(unittest.TestCase):
         dictionary = r1.to_dictionary()
         json_dictionary = base.Base.to_json_string([dictionary])
         self.assertEqual(dictionary.__str__(),
-                         "{'id': 1, 'width': 10, 'height': 7, 'x': 2, 'y': 8}")
+                         "{'id': 3, 'width': 10, 'height': 7, 'x': 2, 'y': 8}")
         self.assertEqual(type(dictionary), dict, "<class 'dict'>")
-        self.assertEqual(json_dictionary.__str__(), '[{"id": 1,\
+        self.assertEqual(json_dictionary.__str__(), '[{"id": 3,\
  "width": 10, "height": 7, "x": 2, "y": 8}]')
         self.assertEqual(type(json_dictionary), str, "<class 'str'>")
+
+    def test_to_join_str_empty(self):
+        """ test with an empty list"""
+        empty_list = []
+        json_str_1 = base.Base.to_json_string(empty_list)
+        self.assertEqual(json_str_1.__str__(), '[]')
+
+    def test_to_join_str_none(self):
+        """ test using none list"""
+        None_list = None
+        json_str_1 = base.Base.to_json_string(None_list)
+
+        self.assertEqual(json_str_1.__str__(), '[]')
+
+    def test_JSON_string_to_file(self):
+        """ test implementation of json string to file """
+        r1_to_file = rectangle.Rectangle(10, 7, 2, 8)
+        r2_to_file = rectangle.Rectangle(2, 4)
+        rectangle.Rectangle.save_to_file([r1_to_file, r2_to_file])
+        with open("Rectangle.json", "r") as file:
+            self.assertEqual(file.read().__str__(), '[{"id": 1,\
+ "width": 10, "height": 7, "x": 2, "y": 8},\
+ {"id": 2, "width": 2, "height": 4, "x": 0, "y": 0}]')
+
+    def test_empty_list_obj(self):
+        """ test empty list_obj"""
+        rectangle.Rectangle.save_to_file(None)
+
+        with open("Rectangle.json", "r") as file:
+            self.assertEqual(file.read().__str__(), '[]')
 
 
 def test_init_documentation(self):
