@@ -155,6 +155,8 @@ class Base:
         turtle.setup(width=800, height=800)
         turtle.title("Draw Rectangle and Squares")
         turtle.speed(0)
+        turtle.hideturtle()
+
 
         def help_draw(x, y, width, height):
             """helper function to help draw the
@@ -163,6 +165,8 @@ class Base:
             turtle.penup()
             turtle.goto(x, y)
             turtle.pendown()
+            turtle.color("Dark Green")
+            turtle.begin_fill()
             turtle.setheading(0)
             turtle.forward(width)
             turtle.right(90)
