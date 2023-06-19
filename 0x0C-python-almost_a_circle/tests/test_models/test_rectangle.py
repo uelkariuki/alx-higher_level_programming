@@ -296,8 +296,8 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(recty1.id, 30)
         self.assertEqual(recty1.__str__(), "[Rectangle] (30) 1/9 - 10/2")
         recty_dict = recty1.to_dictionary()
-        self.assertEqual(recty_dict.__str__(),
-                         "{'id': 30, 'width': 10, 'height': 2, 'x': 1, 'y': 9}")
+        self.assertEqual(recty_dict.__str__(), "{'id': 30,\
+ 'width': 10, 'height': 2, 'x': 1, 'y': 9}")
         self.assertEqual(type(recty_dict), dict, "<class 'dict'>")
 
         recty2 = Rectangle(1, 1)
