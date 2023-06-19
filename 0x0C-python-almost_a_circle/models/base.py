@@ -3,12 +3,9 @@
 """
 Write the first class Base: (Question 1)
 """
-import json
-""" importing json"""
-import os
-""" importing os to check if file exists"""
-import csv
-""" importing csv"""
+import json  # """ importing json"""
+import os  # """ importing os to check if file exists"""
+import csv  # """ importing csv"""
 import turtle
 """ importing turtle to use turtle graphics"""
 

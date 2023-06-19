@@ -1,11 +1,8 @@
 #!/usr/bin/python3
 
-from io import StringIO
-"""importing StringIO from io"""
-from models.rectangle import Rectangle
-""" importing rectangle from models"""
-import sys
-"""importing the sys module"""
+from io import StringIO  # """importing StringIO from io"""
+from models.rectangle import Rectangle  # """ importing rectangle """
+import sys  # """importing the sys module"""
 import unittest
 """ importing the unittest module"""
 

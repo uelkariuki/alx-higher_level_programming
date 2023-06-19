@@ -1,13 +1,9 @@
 #!/usr/bin/python3
 
-from models.base import Base
-""" importing base """
-from models.rectangle import Rectangle
-""" importing rectangle"""
-from models.square import Square
-""" importing square"""
-import os
-""" import os"""
+from models.base import Base  # """ importing base """
+from models.rectangle import Rectangle  # """ importing rectangle"""
+from models.square import Square  # """ importing square"""
+import os  # """ import os"""
 import unittest
 """ importing the unittest module"""
 
