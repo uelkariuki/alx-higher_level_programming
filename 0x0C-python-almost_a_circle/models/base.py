@@ -157,7 +157,6 @@ class Base:
         turtle.speed(0)
         turtle.hideturtle()
 
-
         def help_draw(x, y, width, height):
             """helper function to help draw the
             rectangles and squares
