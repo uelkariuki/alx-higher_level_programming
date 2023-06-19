@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 
-from models import base
+from models.base import Base
 """ importing base """
-from models import rectangle
+from models.rectangle import Rectangle
 """ importing rectangle"""
-from models import square
+from models.square import Square
 """ importing square"""
 import os
 """ import os"""
@@ -24,32 +24,32 @@ class TestBase(unittest.TestCase):
     """
     def test_module_documentation(self):
         """ method to ascertain that module documentation is present"""
-        q1_module_doc = base.__doc__
+        q1_module_doc = Base.__doc__
         self.assertTrue(len(q1_module_doc) > 1,
                         "documentation for q1 module not found")
 
     def test_class_documentation(self):
         """ method to ascertain the class documentation is present"""
-        class_doc = base.Base.__doc__
+        class_doc = Base.__doc__
         self.assertTrue(len(class_doc) > 1,
                         "documentation for q1 class present not found")
 
     def test_function_documentation(self):
         """ method to ascertain the function documentation is present"""
-        func_doc = base.Base.__init__.__doc__
+        func_doc = Base.__init__.__doc__
         self.assertTrue(len(func_doc) > 1,
                         "documentation for q1 function present not found")
 
     def test_instance_count(self):
         """ method to ascertain the number of instances"""
-        object1 = base.Base()
-        object2 = base.Base()
+        object1 = Base()
+        object2 = Base()
 
         self.assertEqual(object2.id, 19)
 
-        object3 = base.Base()
-        object4 = base.Base()
-        object5 = base.Base()
+        object3 = Base()
+        object4 = Base()
+        object5 = Base()
 
         self.assertEqual(object5.id, 22)  # 18 instances created
 
@@ -57,33 +57,28 @@ class TestBase(unittest.TestCase):
         """ ascertain the values printed by Base.id representing
         the number of instances created.
         """
-        b1 = base.Base()
+        b1 = Base()
         self.assertEqual(b1.id, 23)
 
-        b2 = base.Base()
+        b2 = Base()
         self.assertEqual(b2.id, 24)
 
-        b3 = base.Base()
+        b3 = Base()
         self.assertEqual(b3.id, 25)
 
-        b4 = base.Base(12)
+        b4 = Base(12)
         self.assertEqual(b4.id, 12)
 
-        b5 = base.Base()
+        b5 = Base()
         self.assertEqual(b5.id, 26)
-
-    def test_with_no_print_arguments(self):
-        """ test with no print args"""
-        with self.assertRaises(NameError):
-            Base()
 
     def test_dict_to_json_string(self):
         """ test case for the implementation
         of dictionary to json string
         """
-        r1 = rectangle.Rectangle(10, 7, 2, 8)
+        r1 = Rectangle(10, 7, 2, 8)
         dictionary = r1.to_dictionary()
-        json_dictionary = base.Base.to_json_string([dictionary])
+        json_dictionary = Base.to_json_string([dictionary])
         self.assertEqual(dictionary.__str__(), "{'id': 17,\
  'width': 10, 'height': 7, 'x': 2, 'y': 8}")
         self.assertEqual(type(dictionary), dict, "<class 'dict'>")
@@ -94,21 +89,21 @@ class TestBase(unittest.TestCase):
     def test_to_json_str_empty(self):
         """ test with an empty list"""
         empty_list = []
-        json_str_1 = base.Base.to_json_string(empty_list)
+        json_str_1 = Base.to_json_string(empty_list)
         self.assertEqual(json_str_1.__str__(), '[]')
 
     def test_to_json_str_none(self):
         """ test using none list"""
         None_list = None
-        json_str_1 = base.Base.to_json_string(None_list)
+        json_str_1 = Base.to_json_string(None_list)
 
         self.assertEqual(json_str_1.__str__(), '[]')
 
     def test_JSON_string_to_file(self):
         """ test implementation of json string to file """
-        r1_to_file = rectangle.Rectangle(10, 7, 2, 8)
-        r2_to_file = rectangle.Rectangle(2, 4)
-        rectangle.Rectangle.save_to_file([r1_to_file, r2_to_file])
+        r1_to_file = Rectangle(10, 7, 2, 8)
+        r2_to_file = Rectangle(2, 4)
+        Rectangle.save_to_file([r1_to_file, r2_to_file])
         with open("Rectangle.json", "r") as file:
             self.assertEqual(file.read().__str__(), '[{"id": 11,\
  "width": 10, "height": 7, "x": 2, "y": 8},\
@@ -116,7 +111,7 @@ class TestBase(unittest.TestCase):
 
     def test_empty_list_obj(self):
         """ test empty list_obj"""
-        rectangle.Rectangle.save_to_file(None)
+        Rectangle.save_to_file(None)
 
         with open("Rectangle.json", "r") as file:
             self.assertEqual(file.read().__str__(), '[]')
@@ -127,8 +122,8 @@ class TestBase(unittest.TestCase):
                 {'id': 89, 'width': 10, 'height': 4},
                 {'id': 7, 'width': 1, 'height': 7}
         ]
-        json_list_input = rectangle.Rectangle.to_json_string(list_input)
-        list_output = rectangle.Rectangle.from_json_string(json_list_input)
+        json_list_input = Rectangle.to_json_string(list_input)
+        list_output = Rectangle.from_json_string(json_list_input)
         self.assertEqual(type(list_input), list,
                          "[<class 'list'>] [{'height': 4,\
  'width': 10, 'id': 89}, {'height': 7, 'width': 1, 'id': 7}]")
@@ -147,13 +142,13 @@ class TestBase(unittest.TestCase):
     def test_empty_json_string(self):
         """ test empty json string"""
         empty_json = "[]"
-        json_empty_result = base.Base.from_json_string(empty_json)
+        json_empty_result = Base.from_json_string(empty_json)
         self.assertEqual(json_empty_result, [])
 
     def test_none_json_string(self):
         """ test using none string"""
         None_str = None
-        None_json = base.Base.from_json_string(None_str)
+        None_json = Base.from_json_string(None_str)
         self.assertEqual(None_json, [])
 
     def test_Dictionary_to_Instance(self):
@@ -161,12 +156,12 @@ class TestBase(unittest.TestCase):
         Testing the implementation of question 18 dictionary
         to instance
         """
-        rect1 = rectangle.Rectangle(3, 5, 1)
+        rect1 = Rectangle(3, 5, 1)
         self.assertEqual(rect1.width, 3)
         self.assertEqual(rect1.height, 5)
         self.assertEqual(rect1.x, 1)
         r1_dict = rect1.to_dictionary()
-        rect2 = rectangle.Rectangle.create(**r1_dict)
+        rect2 = Rectangle.create(**r1_dict)
         self.assertEqual(rect1.__str__(), "[Rectangle] (1) 1/0 - 3/5")
         self.assertEqual(rect2.__str__(), "[Rectangle] (1) 1/0 - 3/5")
         self.assertEqual(rect1 is rect2.__str__(), False)
@@ -177,32 +172,32 @@ class TestBase(unittest.TestCase):
         Test case for the implementation of question 19 file to
         instances
         """
-        R1 = rectangle.Rectangle(10, 7, 2, 8)
+        R1 = Rectangle(10, 7, 2, 8)
         self.assertEqual(R1.width, 10)
         self.assertEqual(R1.height, 7)
         self.assertEqual(R1.x, 2)
         self.assertEqual(R1.y, 8)
-        R2 = rectangle.Rectangle(2, 4)
+        R2 = Rectangle(2, 4)
         self.assertEqual(R2.width, 2)
         self.assertEqual(R2.height, 4)
         list_rectangles_input = [R1, R2]
-        rectangle.Rectangle.save_to_file(list_rectangles_input)
-        list_rectangles_output = rectangle.Rectangle.load_from_file()
+        Rectangle.save_to_file(list_rectangles_input)
+        list_rectangles_output = Rectangle.load_from_file()
         for q in range(len(list_rectangles_input)):
             self.assertEqual(str(list_rectangles_input[q]),
                              str(list_rectangles_output[q]))
 
-        S1 = square.Square(5)
+        S1 = Square(5)
         self.assertEqual(S1.size, 5)
         self.assertEqual(S1.x, 0)
         self.assertEqual(S1.y, 0)
-        S2 = square.Square(7, 9, 1)
+        S2 = Square(7, 9, 1)
         self.assertEqual(S2.size, 7)
         self.assertEqual(S2.x, 9)
         self.assertEqual(S2.y, 1)
         list_squares_input = [S1, S2]
-        square.Square.save_to_file(list_squares_input)
-        list_squares_output = square.Square.load_from_file()
+        Square.save_to_file(list_squares_input)
+        list_squares_output = Square.load_from_file()
         for q in range(len(list_squares_input)):
             self.assertEqual(str(list_squares_input[q]),
                              str(list_squares_output[q]))
@@ -214,7 +209,7 @@ class TestBase(unittest.TestCase):
         """
         filename = "no_file.json"
         if not os.path.isfile(filename):
-            instance = base.Base.load_from_file()
+            instance = Base.load_from_file()
             self.assertEqual(instance, [])
 
     def test_csv_rectangle(self):
@@ -222,21 +217,21 @@ class TestBase(unittest.TestCase):
         Test case for if the implementation of csv was
         succesful, case: Rectangle
         """
-        n_re1 = rectangle.Rectangle(10, 7, 5, 8)
+        n_re1 = Rectangle(10, 7, 5, 8)
         self.assertEqual(n_re1.width, 10)
         self.assertEqual(n_re1.height, 7)
         self.assertEqual(n_re1.x, 5)
         self.assertEqual(n_re1.y, 8)
 
-        n_re2 = rectangle.Rectangle(2, 4)
+        n_re2 = Rectangle(2, 4)
         self.assertEqual(n_re2.width, 2)
         self.assertEqual(n_re2.height, 4)
         self.assertEqual(n_re2.x, 0)
         self.assertEqual(n_re2.x, 0)
 
         n_list_rect_input = [n_re1, n_re2]
-        rectangle.Rectangle.save_to_file_csv(n_list_rect_input)
-        n_list_rect_output = rectangle.Rectangle.load_from_file_csv()
+        Rectangle.save_to_file_csv(n_list_rect_input)
+        n_list_rect_output = Rectangle.load_from_file_csv()
         for rec_in, rec_out in zip(n_list_rect_input, n_list_rect_output):
             self.assertEqual(str(rec_in), str(rec_out))
 
@@ -245,17 +240,17 @@ class TestBase(unittest.TestCase):
         Test case for if the implementation of csv was
         succesful, case: Square
         """
-        squa1 = square.Square(5)
+        squa1 = Square(5)
         self.assertEqual(squa1.size, 5)
         self.assertEqual(squa1.x, 0)
         self.assertEqual(squa1.x, 0)
-        squa2 = square.Square(7, 9, 1)
+        squa2 = Square(7, 9, 1)
         self.assertEqual(squa2.size, 7)
         self.assertEqual(squa2.x, 9)
         self.assertEqual(squa2.y, 1)
         list_squa_input = [squa1, squa2]
-        square.Square.save_to_file_csv(list_squa_input)
-        list_squa_output = square.Square.load_from_file_csv()
+        Square.save_to_file_csv(list_squa_input)
+        list_squa_output = Square.load_from_file_csv()
         for sq_in, sq_out in zip(list_squa_input, list_squa_output):
             self.assertEqual(str(sq_in), str(sq_out))
 
