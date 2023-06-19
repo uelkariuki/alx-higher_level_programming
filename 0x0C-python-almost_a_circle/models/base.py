@@ -153,7 +153,7 @@ class Base:
         a window and draws all the Rectangles and Squares:
         """
         turtle.setup(width=800, height=800)
-        turtle.title("Draw Rectangle and Squares")
+        turtle.title("Draw Rectangles and Squares")
         turtle.speed(0)
         turtle.hideturtle()
 
