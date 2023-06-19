@@ -9,7 +9,8 @@ import os
 """ importing os to check if file exists"""
 import csv
 """ importing csv"""
-
+import turtle
+""" importing turtle to use turtle graphics"""
 
 class Base:
     """ class Base"""
@@ -147,4 +148,36 @@ class Base:
 
         return list_objs
 
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """
+        static method def draw(list_rectangles, list_squares): that opens
+        a window and draws all the Rectangles and Squares:
+        """
+        turtle.setup(width=800, height=800)
+        turtle.title("Draw Rectangle and Squares")
+        turtle.speed(0)
 
+        def help_draw(x, y, width, height):
+            """helper function to help draw the
+            rectangles and squares
+            """
+            turtle.penup()
+            turtle.goto(x, y)
+            turtle.pendown()
+            turtle.setheading(0)
+            turtle.forward(width)
+            turtle.right(90)
+            turle.forward(height)
+            turtle.right(90)
+            turtle.forward(width)
+            turtle.right(90)
+            turtle.forward(height)
+
+        for rectangle in list_rectangles:
+            help_draw(rectangle.x, rectangle.y, rectangle.width, rectangle.height)
+
+        for square in list_squares:
+            help_draw(square.x, square.y, square.size, square.size)
+
+        turtle.done()
