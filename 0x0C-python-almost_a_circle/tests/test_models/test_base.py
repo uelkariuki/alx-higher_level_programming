@@ -45,32 +45,32 @@ class TestBase(unittest.TestCase):
         object1 = base.Base()
         object2 = base.Base()
 
-        self.assertEqual(object2.id, 15)
+        self.assertEqual(object2.id, 19)
 
         object3 = base.Base()
         object4 = base.Base()
         object5 = base.Base()
 
-        self.assertEqual(object5.id, 18)  # 18 instances created
+        self.assertEqual(object5.id, 22)  # 18 instances created
 
     def test_values(self):
         """ ascertain the values printed by Base.id representing
         the number of instances created.
         """
         b1 = base.Base()
-        self.assertEqual(b1.id, 19)
+        self.assertEqual(b1.id, 23)
 
         b2 = base.Base()
-        self.assertEqual(b2.id, 20)
+        self.assertEqual(b2.id, 24)
 
         b3 = base.Base()
-        self.assertEqual(b3.id, 21)
+        self.assertEqual(b3.id, 25)
 
         b4 = base.Base(12)
         self.assertEqual(b4.id, 12)
 
         b5 = base.Base()
-        self.assertEqual(b5.id, 22)
+        self.assertEqual(b5.id, 26)
 
     def test_with_no_print_arguments(self):
         """ test with no print args"""
@@ -84,10 +84,10 @@ class TestBase(unittest.TestCase):
         r1 = rectangle.Rectangle(10, 7, 2, 8)
         dictionary = r1.to_dictionary()
         json_dictionary = base.Base.to_json_string([dictionary])
-        self.assertEqual(dictionary.__str__(), "{'id': 13,\
+        self.assertEqual(dictionary.__str__(), "{'id': 17,\
  'width': 10, 'height': 7, 'x': 2, 'y': 8}")
         self.assertEqual(type(dictionary), dict, "<class 'dict'>")
-        self.assertEqual(json_dictionary.__str__(), '[{"id": 13,\
+        self.assertEqual(json_dictionary.__str__(), '[{"id": 17,\
  "width": 10, "height": 7, "x": 2, "y": 8}]')
         self.assertEqual(type(json_dictionary), str, "<class 'str'>")
 
@@ -194,6 +194,8 @@ class TestBase(unittest.TestCase):
 
         S1 = square.Square(5)
         self.assertEqual(S1.size, 5)
+        self.assertEqual(S1.x, 0)
+        self.assertEqual(S1.y, 0)
         S2 = square.Square(7, 9, 1)
         self.assertEqual(S2.size, 7)
         self.assertEqual(S2.x, 9)
@@ -214,6 +216,48 @@ class TestBase(unittest.TestCase):
         if not os.path.isfile(filename):
             instance = base.Base.load_from_file()
             self.assertEqual(instance, [])
+
+    def test_csv_rectangle(self):
+        """
+        Test case for if the implementation of csv was
+        succesful, case: Rectangle
+        """
+        n_re1 = rectangle.Rectangle(10, 7, 5, 8)
+        self.assertEqual(n_re1.width, 10)
+        self.assertEqual(n_re1.height, 7)
+        self.assertEqual(n_re1.x, 5)
+        self.assertEqual(n_re1.y, 8)
+
+        n_re2 = rectangle.Rectangle(2, 4)
+        self.assertEqual(n_re2.width, 2)
+        self.assertEqual(n_re2.height, 4)
+        self.assertEqual(n_re2.x, 0)
+        self.assertEqual(n_re2.x, 0)
+
+        n_list_rect_input = [n_re1, n_re2]
+        rectangle.Rectangle.save_to_file_csv(n_list_rect_input)
+        n_list_rect_output = rectangle.Rectangle.load_from_file_csv()
+        for rec_in, rec_out in zip(n_list_rect_input, n_list_rect_output):
+            self.assertEqual(str(rec_in), str(rec_out))
+
+    def test_csv_square(self):
+        """
+        Test case for if the implementation of csv was
+        succesful, case: Square
+        """
+        squa1 = square.Square(5)
+        self.assertEqual(squa1.size, 5)
+        self.assertEqual(squa1.x, 0)
+        self.assertEqual(squa1.x, 0)
+        squa2 = square.Square(7, 9, 1)
+        self.assertEqual(squa2.size, 7)
+        self.assertEqual(squa2.x, 9)
+        self.assertEqual(squa2.y, 1)
+        list_squa_input = [squa1, squa2]
+        square.Square.save_to_file_csv(list_squa_input)
+        list_squa_output = square.Square.load_from_file_csv()
+        for sq_in, sq_out in zip(list_squa_input, list_squa_output):
+            self.assertEqual(str(sq_in), str(sq_out))
 
 
 def test_init_documentation(self):

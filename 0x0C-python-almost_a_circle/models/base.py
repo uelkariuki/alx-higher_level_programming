@@ -7,6 +7,8 @@ import json
 """ importing json"""
 import os
 """ importing os to check if file exists"""
+import csv
+""" importing csv"""
 
 
 class Base:
@@ -80,8 +82,13 @@ class Base:
         update method to be called to the dummy instance to
         apply the real values
         """
-        for key, value in dictionaty.items():
-            return (self, key, value)
+        if args:
+            attrs = ['id', 'width', 'height', 'x', 'y']
+            for q, value in enumerate(args):
+                setattr(self, attrs[q], value)
+        else:
+            for key, value in dictionary.items():
+                setattr(self, key, value)
 
     @classmethod
     def load_from_file(cls):
@@ -102,3 +109,40 @@ class Base:
                     total_instances.append(instance)
 
         return total_instances
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        adding the class methods def save_to_file_csv(cls,
+        list_objs):that serializes and deserializes in CSV
+        """
+        filename = "{}.csv".format(cls.__name__)
+        with open(filename, mode="w", newline="") as file:
+            csv_write = csv.writer(file, delimiter=",")
+            for objs in list_objs:
+                if cls.__name__ == "Rectangle":
+                    csv_write.writerow([objs.id, objs.width,
+                                       objs.height, objs.x, objs.y])
+                elif cls.__name__ == "Square":
+                    csv_write.writerow([objs.id, objs.size, objs.x, objs.y])
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        adding the class methods def load_from_file_csv(cls):
+        that serializes and deserializes in CSV:
+        """
+        filename = "{}.csv".format(cls.__name__)
+        list_objs = []
+        with open(filename, mode="r") as file:
+            csv_read = csv.reader(file, delimiter=",")
+            for row in csv_read:
+                row = [int(x) for x in row]
+                if cls.__name__ == "Rectangle":
+                    object = cls(row[1], row[2], row[3], row[4], row[0])
+
+                elif cls.__name__ == "Square":
+                    object = cls(row[1], row[2], row[3], row[0])
+                list_objs.append(object)
+
+        return list_objs
