@@ -12,6 +12,7 @@ import csv
 import turtle
 """ importing turtle to use turtle graphics"""
 
+
 class Base:
     """ class Base"""
     """ private class attribute """
@@ -175,7 +176,8 @@ class Base:
             turtle.forward(height)
 
         for rectangle in list_rectangles:
-            help_draw(rectangle.x, rectangle.y, rectangle.width, rectangle.height)
+            help_draw(rectangle.x, rectangle.y, rectangle.width,
+                      rectangle.height)
 
         for square in list_squares:
             help_draw(square.x, square.y, square.size, square.size)
