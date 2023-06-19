@@ -166,7 +166,7 @@ class Base:
             turtle.setheading(0)
             turtle.forward(width)
             turtle.right(90)
-            turle.forward(height)
+            turtle.forward(height)
             turtle.right(90)
             turtle.forward(width)
             turtle.right(90)
