@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+import models  # import models
 from models.base import Base  # """ importing base """
 from models.rectangle import Rectangle  # """ importing rectangle"""
 from models.square import Square  # """ importing square"""
@@ -11,6 +12,16 @@ import unittest
 """
 Unit test for class Base(testing base) for Question 1
 """
+
+
+class TestEmptyInit(unittest.TestCase):
+    """ testing the empty init"""
+    def test_package_empty(self):
+        """ testing init empty"""
+        pack_path = os.path.join(os.getcwd(), 'models')
+        init_file = os.path.join(pack_path, '__init__.py')
+        file_size = os.path.getsize(init_file)
+        self.assertEqual(file_size, 0)
 
 
 class TestBase(unittest.TestCase):
