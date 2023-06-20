@@ -2,6 +2,7 @@
 
 from io import StringIO  # """importing StringIO from io"""
 from models.rectangle import Rectangle  # """ importing rectangle """
+from models import rectangle
 import sys  # """importing the sys module"""
 import unittest
 """ importing the unittest module"""
@@ -17,7 +18,7 @@ class TestRectangle(unittest.TestCase):
     """
     def test_module_documentation(self):
         """ method to ascertain the module documentation is present"""
-        q2_module_doc = Rectangle.__doc__
+        q2_module_doc = rectangle.__doc__
         self.assertTrue(len(q2_module_doc) > 1,
                         "documentation for q2 module not found")
 
