@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import models  # import models
+from models import base  #import base
 from models.base import Base  # """ importing base """
 from models.rectangle import Rectangle  # """ importing rectangle"""
 from models.square import Square  # """ importing square"""
@@ -31,7 +32,7 @@ class TestBase(unittest.TestCase):
     """
     def test_module_documentation(self):
         """ method to ascertain that module documentation is present"""
-        q1_module_doc = Base.__doc__
+        q1_module_doc = base.__doc__
         self.assertTrue(len(q1_module_doc) > 1,
                         "documentation for q1 module not found")
 
