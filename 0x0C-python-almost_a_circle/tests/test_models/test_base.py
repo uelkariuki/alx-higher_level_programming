@@ -250,10 +250,9 @@ class TestBase(unittest.TestCase):
         for sq_in, sq_out in zip(list_squa_input, list_squa_output):
             self.assertEqual(str(sq_in), str(sq_out))
 
-
-def test_init_documentation(self):
-    """ method to ascertain that the init documentation is 0"""
-    with open("models/__init__.py", mode="r") as file:
-        file_content = file.read()
-    assert len(file_content.strip() == 0,
-               "package initialization __init__ must be empty")
+    def test_init_documentation(self):
+        """ method to ascertain that the init documentation is 0"""
+        with open("models/__init__.py", mode="r") as file:
+            file_content = file.read()
+            assert len(file_content.strip()) == 0,\
+                   "package initialization __init__ must be empty"
