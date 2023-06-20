@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 import models  # import models
-from models import base  #import base
+from models import base  # import base
 from models.base import Base  # """ importing base """
 from models.rectangle import Rectangle  # """ importing rectangle"""
 from models.square import Square  # """ importing square"""
