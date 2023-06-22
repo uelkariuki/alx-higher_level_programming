@@ -177,6 +177,8 @@ class TestBase(unittest.TestCase):
         rect3 = Rectangle(2, 3)
         reCt3_dict = rect3.to_dictionary()
         reCt3 = Rectangle.create(**reCt3_dict)
+        self.assertEqual(rect3.__str__(), "[Rectangle] (3) 0/0 - 2/3")
+        self.assertEqual(reCt3.__str__(), "[Rectangle] (3) 0/0 - 2/3")
         self.assertEqual(rect3.width, 2)
         self.assertEqual(rect3.height, 3)
         self.assertEqual(rect3.x, 0)
