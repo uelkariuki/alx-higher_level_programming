@@ -80,6 +80,8 @@ class TestsSquare(unittest.TestCase):
             square.Square(1, -2)
         with self.assertRaises(ValueError):
             square.Square(1, 2, -3)
+        with self.assertRaises(ValueError):
+            square.Square(0)
 
     def test_display_small_square_with_x_coordinate(self):
         """ display small square with x coordinate using #"""
@@ -98,7 +100,7 @@ class TestsSquare(unittest.TestCase):
         that inherits from Rectangle
         """
         s3 = square.Square(3, 1, 3)
-        self.assertEqual(s3.__str__(), "[Square] (63) 1/3 - 3")
+        self.assertEqual(s3.__str__(), "[Square] (64) 1/3 - 3")
         self.assertEqual(s3.area(), 9)
 
     def test_display_small_square_with_both_x_y_coordinate(self):
