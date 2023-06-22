@@ -41,22 +41,22 @@ class TestRectangle(unittest.TestCase):
         r1 = Rectangle(10, 2)
         self.assertEqual(r1.width, 10)
         self.assertEqual(r1.height, 2)
-        self.assertEqual(r1.id, 36)
+        self.assertEqual(r1.id, 40)
         r2 = Rectangle(2, 10)
         self.assertEqual(r2.width, 2)
         self.assertEqual(r2.height, 10)
-        self.assertEqual(r2.id, 37)
+        self.assertEqual(r2.id, 41)
         r3 = Rectangle(2, 10, 0)
         self.assertEqual(r3.width, 2)
         self.assertEqual(r3.height, 10)
         self.assertEqual(r3.x, 0)
-        self.assertEqual(r3.id, 38)
+        self.assertEqual(r3.id, 42)
         r4 = Rectangle(2, 10, 0, 0)
         self.assertEqual(r4.width, 2)
         self.assertEqual(r4.height, 10)
         self.assertEqual(r4.x, 0)
         self.assertEqual(r4.y, 0)
-        self.assertEqual(r4.id, 39)
+        self.assertEqual(r4.id, 43)
         r5 = Rectangle(10, 2, 0, 0, 12)
         self.assertEqual(r5.width, 10)
         self.assertEqual(r5.height, 2)
@@ -68,7 +68,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(rec.height, 30)
         self.assertEqual(rec.x, 0)
         self.assertEqual(rec.y, 0)
-        self.assertEqual(rec.id, 40)
+        self.assertEqual(rec.id, 44)
         rec1 = Rectangle(20, 30, 2, 7, 15)
         self.assertEqual(rec1.width, 20)
         self.assertEqual(rec1.height, 30)
@@ -144,6 +144,18 @@ class TestRectangle(unittest.TestCase):
             Rectangle(3, 2, 4, -6, 16)
         with self.assertRaises(TypeError):
             Rectangle([])
+        with self.assertRaises(TypeError):
+            Rectangle("1")
+        with self.assertRaises(TypeError):
+            Rectangle(1, "2")
+        with self.assertRaises(TypeError):
+            Rectangle(1, 2, "3")
+        with self.assertRaises(TypeError):
+            Rectangle(-1)
+        with self.assertRaises(ValueError):
+            Rectangle(1, -2)
+        with self.assertRaises(ValueError):
+            Rectangle(1, 2, -3)
 
     def test_display_small_rec(self):
         """ testing how rectangle is displayed using #"""
