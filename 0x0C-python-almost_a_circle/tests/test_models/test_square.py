@@ -40,7 +40,7 @@ class TestsSquare(unittest.TestCase):
         """
 
         s1 = square.Square(5)
-        self.assertEqual(s1.__str__(), "[Square] (57) 0/0 - 5")
+        self.assertEqual(s1.__str__(), "[Square] (60) 0/0 - 5")
         self.assertEqual(s1.area(), 25)
 
     def test_square_display(self):
@@ -63,7 +63,7 @@ class TestsSquare(unittest.TestCase):
         that inherits from Rectangle
         """
         s2 = square.Square(2, 2)
-        self.assertEqual(s2.__str__(), "[Square] (58) 2/0 - 2")
+        self.assertEqual(s2.__str__(), "[Square] (61) 2/0 - 2")
         self.assertEqual(s2.area(), 4)
 
         with self.assertRaises(TypeError):
@@ -100,7 +100,7 @@ class TestsSquare(unittest.TestCase):
         that inherits from Rectangle
         """
         s3 = square.Square(3, 1, 3)
-        self.assertEqual(s3.__str__(), "[Square] (67) 1/3 - 3")
+        self.assertEqual(s3.__str__(), "[Square] (70) 1/3 - 3")
         self.assertEqual(s3.area(), 9)
 
     def test_display_small_square_with_both_x_y_coordinate(self):
@@ -118,10 +118,10 @@ class TestsSquare(unittest.TestCase):
     def test_square_size_setter(self):
         """ method to test the square size"""
         squ1 = square.Square(5)
-        self.assertEqual(squ1.__str__(), "[Square] (56) 0/0 - 5")
+        self.assertEqual(squ1.__str__(), "[Square] (59) 0/0 - 5")
         self.assertEqual(squ1.size.__str__(), "5")
         squ1.size = 10
-        self.assertEqual(squ1.__str__(), "[Square] (56) 0/0 - 10")
+        self.assertEqual(squ1.__str__(), "[Square] (59) 0/0 - 10")
         with self.assertRaises(TypeError):
             squ1.size("9")
 
@@ -131,8 +131,8 @@ class TestsSquare(unittest.TestCase):
         self.assertEqual(sq_arg_test.size, 5)
         self.assertEqual(sq_arg_test.x, 0)
         self.assertEqual(sq_arg_test.y, 0)
-        self.assertEqual(sq_arg_test.id, 50)
-        self.assertEqual(sq_arg_test.__str__(), "[Square] (50) 0/0 - 5")
+        self.assertEqual(sq_arg_test.id, 53)
+        self.assertEqual(sq_arg_test.__str__(), "[Square] (53) 0/0 - 5")
         sq_arg_test.update(10)
         self.assertEqual(sq_arg_test.__str__(), "[Square] (10) 0/0 - 5")
         sq_arg_test.update(1, 2)
@@ -158,19 +158,19 @@ class TestsSquare(unittest.TestCase):
         self.assertEqual(squay1.size, 10)
         self.assertEqual(squay1.x, 2)
         self.assertEqual(squay1.y, 1)
-        self.assertEqual(squay1.id, 51)
-        self.assertEqual(squay1.__str__(), "[Square] (51) 2/1 - 10")
+        self.assertEqual(squay1.id, 54)
+        self.assertEqual(squay1.__str__(), "[Square] (54) 2/1 - 10")
         squay_dict = squay1.to_dictionary()
         self.assertEqual(squay_dict.__str__(),
-                         "{'id': 51, 'size': 10, 'x': 2, 'y': 1}")
+                         "{'id': 54, 'size': 10, 'x': 2, 'y': 1}")
         self.assertEqual(type(squay_dict), dict, "<class 'dict'>")
 
         squay2 = square.Square(1, 1)
         self.assertEqual(squay2.size, 1)
         self.assertEqual(squay2.x, 1)
-        self.assertEqual(squay2.id, (52))
-        self.assertEqual(squay2.__str__(), "[Square] (52) 1/0 - 1")
+        self.assertEqual(squay2.id, (55))
+        self.assertEqual(squay2.__str__(), "[Square] (55) 1/0 - 1")
 
         squay2.update(**squay_dict)
-        self.assertEqual(squay2.__str__(), "[Square] (51) 2/1 - 10")
+        self.assertEqual(squay2.__str__(), "[Square] (54) 2/1 - 10")
         self.assertEqual(squay1 == squay2.__str__(), False)
