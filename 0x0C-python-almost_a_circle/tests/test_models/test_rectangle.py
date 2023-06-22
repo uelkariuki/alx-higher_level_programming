@@ -142,6 +142,8 @@ class TestRectangle(unittest.TestCase):
             Rectangle(3, 2, -4, 4, 16)
         with self.assertRaises(ValueError):
             Rectangle(3, 2, 4, -6, 16)
+        with self.assertRaises(TypeError):
+            Rectangle([])
 
     def test_display_small_rec(self):
         """ testing how rectangle is displayed using #"""
