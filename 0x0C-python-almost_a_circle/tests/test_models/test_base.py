@@ -131,8 +131,7 @@ class TestBase(unittest.TestCase):
 
         Rectangle.save_to_file([])
         with open("Rectangle.json", "r") as file:
-            result = file.read()
-        self.assertEqual(result, '[]')
+            self.assertEqual(file.read().__str__(), '[]')
 
         Square.save_to_file(None)
         with open("Square.json", "r") as file:
