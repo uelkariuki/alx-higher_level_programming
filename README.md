@@ -19,4 +19,3 @@ This repository contains the projects I undertook in Higher Level Programming
 14. 0x0A. Python - Inheritance
 15. 0x0B. Python - Input/Output
 16. 0x0C. Python - Almost a circle
-17. 0x00. AirBnB clone - The console
