@@ -2,7 +2,7 @@
 
 const argv = process.argv;
 
-const result = argv.slice(2);
+const result = argv.slice(2, 3);
 
 if (!result.some(() => true)) {
   console.log('No argument');
