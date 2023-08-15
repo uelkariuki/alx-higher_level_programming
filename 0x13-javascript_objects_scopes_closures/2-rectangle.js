@@ -2,15 +2,10 @@
 
 class Rectangle {
   constructor (w, h) {
-    if (w <= 0 || !Number.isInteger(w)) {
-      return {};
+    if (w <= 0 || !Number.isInteger(w) || h <= 0 || !Number.isInteger(h)) {
+      return 'Rectangle {}';
     } else {
       this.width = w;
-    }
-
-    if (h <= 0 || !Number.isInteger(h)) {
-      return {};
-    } else {
       this.height = h;
     }
   }
