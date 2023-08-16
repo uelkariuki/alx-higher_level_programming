@@ -2,10 +2,10 @@
 
 const FileSystem = require('fs');
 
-function concat (fileA, fileB, fileC) {
-  const fileData1 = FileSystem.readFileSync(fileA, 'utf8');
-  const fileData2 = FileSystem.readFileSync(fileB, 'utf8');
-  FileSystem.writeFileSync(fileC, fileData1 + fileData2);
-}
+const fileA = process.argv[2];
+const fileB = process.argv[3];
+const fileC = process.argv[4];
 
-concat('fileA', 'fileB', 'fileC');
+const fileData1 = FileSystem.readFileSync(fileA, 'utf8');
+const fileData2 = FileSystem.readFileSync(fileB, 'utf8');
+FileSystem.writeFileSync(fileC, fileData1 + fileData2);
