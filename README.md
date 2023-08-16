@@ -20,3 +20,4 @@ This repository contains the projects I undertook in Higher Level Programming
 15. 0x0B. Python - Input/Output
 16. 0x0C. Python - Almost a circle
 17. 0x12. JavaScript - Warm up
+18. 0x13. JavaScript - Objects, Scopes and Closures
