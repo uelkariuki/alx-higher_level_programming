@@ -15,7 +15,9 @@ database_name = sys.argv[3]
 MySQL_host = "localhost"
 MySQL_port = 3306
 
+
 def main():
+    """main method"""
     db_conn = MySQLdb.connect(
             host=MySQL_host,
             port=MySQL_port,
@@ -33,6 +35,7 @@ def main():
 
     cursor.close()
     db_conn.close()
+
 
 if __name__ == "__main__":
     main()
