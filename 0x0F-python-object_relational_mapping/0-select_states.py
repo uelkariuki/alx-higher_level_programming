@@ -16,26 +16,20 @@ MySQL_host = "localhost"
 MySQL_port = 3306
 
 
-def main():
-    """main method"""
-    db_conn = MySQLdb.connect(
-            host=MySQL_host,
-            port=MySQL_port,
-            user=mysql_username,
-            passwd=mysql_password,
-            db=database_name
-            )
+db_conn = MySQLdb.connect(
+        host=MySQL_host,
+        port=MySQL_port,
+        user=mysql_username,
+        passwd=mysql_password,
+        db=database_name
+        )
 
-    cursor = db_conn.cursor()
-    cursor.execute("SELECT * FROM states ORDER BY states.id ASC")
+cursor = db_conn.cursor()
+cursor.execute("SELECT * FROM states ORDER BY states.id ASC")
 
-    states_list = cursor.fetchall()
-    for row in states_list:
-        print(row)
+states_list = cursor.fetchall()
+for row in states_list:
+    print(row)
 
-    cursor.close()
-    db_conn.close()
-
-
-if __name__ == "__main__":
-    main()
+cursor.close()
+db_conn.close()
