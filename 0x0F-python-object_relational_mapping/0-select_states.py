@@ -15,7 +15,7 @@ if __name__ == "__main__":
     database_name = sys.argv[3]
     MySQL_host = "localhost"
     MySQL_port = 3306
-    
+
     db_conn = MySQLdb.connect(
             host=MySQL_host,
             port=MySQL_port,
