@@ -9,14 +9,13 @@ import sys
 """ Importing the sys module"""
 
 
-mysql_username = sys.argv[1]
-mysql_password = sys.argv[2]
-database_name = sys.argv[3]
-MySQL_host = "localhost"
-MySQL_port = 3306
-
-
 if __name__ == "__main__":
+    mysql_username = sys.argv[1]
+    mysql_password = sys.argv[2]
+    database_name = sys.argv[3]
+    MySQL_host = "localhost"
+    MySQL_port = 3306
+    
     db_conn = MySQLdb.connect(
             host=MySQL_host,
             port=MySQL_port,
