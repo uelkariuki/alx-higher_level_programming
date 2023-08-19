@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 
 """
-script that takes in an argument and displays all values in the
-states table of hbtn_0e_0_usa where name matches the argument.
+script that lists all cities from the database hbtn_0e_4_usa
 """
 
 import MySQLdb
@@ -28,11 +27,13 @@ if __name__ == "__main__":
 
     cursor = db_conn.cursor()
 
-    query = "SELECT * FROM cities ORDER BY cities.id ASC"
+    query = "SELECT cities.id, cities.name, states.name\
+            FROM states JOIN cities ON cities.state_id = states.id\
+            ORDER BY cities.id ASC"
     cursor.execute(query)
 
-    states_list = cursor.fetchall()
-    for row in states_list:
+    cities_list = cursor.fetchall()
+    for row in cities_list:
         print(row)
 
     cursor.close()
