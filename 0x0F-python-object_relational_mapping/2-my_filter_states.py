@@ -14,6 +14,7 @@ if __name__ == "__main__":
     mysql_username = sys.argv[1]
     mysql_password = sys.argv[2]
     database_name = sys.argv[3]
+    search_name = sys.argv[4]
     MySQL_host = "localhost"
     MySQL_port = 3306
 
@@ -27,8 +28,8 @@ if __name__ == "__main__":
             )
 
     cursor = db_conn.cursor()
-
-    query = "SELECT * FROM cities ORDER BY cities.id ASC"
+    query = "SELECT * FROM states WHERE name = '{}' ORDER BY\
+            states.id ASC".format(search_name)
     cursor.execute(query)
 
     states_list = cursor.fetchall()
