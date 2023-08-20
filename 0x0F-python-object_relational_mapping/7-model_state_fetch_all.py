@@ -11,7 +11,7 @@ from model_state import Base, State
 """ importing required modules"""
 
 engine = create_engine(f'mysql+mysqldb://{sys.argv[1]}:{sys.argv[2]}@\
-localhost/{sys.argv[3]}', echo=False)
+localhost:3306/{sys.argv[3]}', echo=False)
 Base.metadata.create_all(engine)
 
 Session = sessionmaker(bind=engine)
