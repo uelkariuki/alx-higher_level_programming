@@ -11,6 +11,8 @@ from sqlalchemy import Column, Integer, String
 """ importing required modules for connecting"""
 
 Base = declarative_base()
+
+
 class City(Base):
     """ class City"""
     __tablename__ = "cities"
