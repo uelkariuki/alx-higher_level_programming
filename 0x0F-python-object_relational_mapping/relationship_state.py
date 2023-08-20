@@ -8,7 +8,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String
-# from relationship_city import Base, City
+from model_city import City
 """ importing create_engine for connecting"""
 
 Base = declarative_base()
