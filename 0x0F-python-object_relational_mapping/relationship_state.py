@@ -4,7 +4,7 @@
 python file that has a class State
 """
 from sqlalchemy import Column, Integer, String
-from relationship_city import City
+# from relationship_city import City
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 
