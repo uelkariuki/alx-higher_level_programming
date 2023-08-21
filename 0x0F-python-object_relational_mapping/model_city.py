@@ -6,7 +6,7 @@ contains the class definition of a City.
 """
 import sys
 from sqlalchemy import ForeignKey
-from model_state import Base, State
+# from model_state import Base, State
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String

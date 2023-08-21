@@ -4,7 +4,6 @@
 Improve the files model_city.py and save them as relationship_city.py
 """
 
-# from relationship_state import Base, State
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 """ importing required modules for connecting"""

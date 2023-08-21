@@ -8,8 +8,8 @@ script that creates the State “California” with the City
 import sys
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
-from relationship_state import State
-from relationship_city import Base, City
+from relationship_state import Base, State
+from relationship_city import City
 """ importing required modules"""
 
 if __name__ == "__main__":
