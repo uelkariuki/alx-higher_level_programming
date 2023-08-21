@@ -8,8 +8,8 @@ script that creates the State “California” with the City
 import sys
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
-from relationship_state import Base, State
-from relationship_city import City
+from relationship_state import State
+from relationship_city import Base, City
 """ importing required modules"""
 
 if __name__ == "__main__":
@@ -22,4 +22,3 @@ if __name__ == "__main__":
 
     session.add(City(name="San Francisco", state=State(name="California")))
     session.commit()
-    session.close()
