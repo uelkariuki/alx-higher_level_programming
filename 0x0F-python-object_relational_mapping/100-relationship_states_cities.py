@@ -14,14 +14,11 @@ from relationship_city import Base, City
 
 if __name__ == "__main__":
     engine = create_engine(f'mysql+mysqldb://{sys.argv[1]}:\
-            {sys.argv[2]}@localhost:3036/{sys.argv[3]}', pool_pre_ping=True)
+{sys.argv[2]}@localhost/{sys.argv[3]}', pool_pre_ping=True)
     Base.metadata.create_all(engine)
 
     Session = sessionmaker(bind=engine)
     session = Session()
-
-    new_state = State(name="California")
-    new_city = City(name="San Francisco")
 
     session.add(City(name="California", state=State(name="California")))
     session.commit()
