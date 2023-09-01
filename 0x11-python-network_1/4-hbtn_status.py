@@ -3,6 +3,7 @@
 """ Python script that fetches https://alx-intranet.hbtn.io/status"""
 
 import requests
+""" Importing the required module"""
 
 
 if __name__ == "__main__":
