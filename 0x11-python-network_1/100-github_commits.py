@@ -29,6 +29,6 @@ def github_commits(repository, owner):
 
 
 if __name__ == "__main__":
-    repository = sys.argv[1]
-    owner = sys.argv[2]
-    github_commits(repository, owner)
+    repository_name = sys.argv[1]
+    owner_name = sys.argv[2]
+    github_commits(repository_name, owner_name)
