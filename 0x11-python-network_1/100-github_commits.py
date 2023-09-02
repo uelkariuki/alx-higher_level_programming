@@ -25,7 +25,7 @@ def github_commits(repository, owner):
     for commit in github_commits[:10]:
         sha = commit['sha']
         name_author = commit["commit"]["author"]["name"]
-        print(f'{sha}:{name_author}')
+        print(f'{sha}: {name_author}')
 
 
 if __name__ == "__main__":
