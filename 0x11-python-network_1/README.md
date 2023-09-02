@@ -32,4 +32,5 @@
 | 7. Error code #1 | [7-error_code.py](./7-error_code.py) |
 | 8. Search API | [8-json_api.py](./8-json_api.py) |
 | 9. My GitHub! | [10-my_github.py](./10-my_github.py) |
+| 10. Time for an interview! | [100-github_commits.py](./100-github_commits.py) |
 
