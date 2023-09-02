@@ -20,9 +20,9 @@ def github_commits(repository, owner):
     url = f"https://api.github.com/repos/{owner}/{repository}/commits"
 
     response = requests.get(url)
-    github_commits = response.json()
+    github_commits_made = response.json()
 
-    for commit in github_commits[:10]:
+    for commit in github_commits_made[:10]:
         sha = commit['sha']
         name_author = commit["commit"]["author"]["name"]
         print(f'{sha}: {name_author}')
