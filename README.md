@@ -22,3 +22,5 @@ This repository contains the projects I undertook in Higher Level Programming
 17. 0x12. JavaScript - Warm up
 18. 0x13. JavaScript - Objects, Scopes and Closures
 19. 0x0F. Python - Object-relational mapping
+20. 0x10. Python - Network #0
+21. 0x11. Python - Network #1
