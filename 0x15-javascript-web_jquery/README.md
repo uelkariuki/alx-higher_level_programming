@@ -45,4 +45,8 @@
 | 7. Star wars character | [7-script.js](./7-script.js) |
 | 8. Star Wars movies | [8-script.js](./8-script.js) |
 | 9. Say Hello! | [9-script.js](./9-script.js) |
+| 10. No jQuery - document loaded | [100-script.js](./100-script.js) |
+| 11. List, add, remove | [101-script.js](./101-script.js) |
+| 12. Say hello to everybody! | [102-script.js](./102-script.js) |
+| 13. And press ENTER | [103-script.js](./103-script.js) |
 

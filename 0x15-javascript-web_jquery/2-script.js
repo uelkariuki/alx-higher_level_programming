@@ -1,3 +1,3 @@
-document.getElementById('red_header').onclick = function () {
-  this.style.color = 'red';
-};
+$('#red_header').click(function() {
+  $('header').css('color', 'red');
+});
